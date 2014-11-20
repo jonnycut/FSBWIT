@@ -5,7 +5,12 @@ public class Testmethoden {
 
 	public static void main(String[] args) {
 		
-		Hilfsmethoden hm = new Hilfsmethoden();
+		//Hilfsmethoden hm = new Hilfsmethoden();
+		String message = new String();
+		message = "Hallo Test";
+		Crypto cr = new Crypto();
+		System.out.println(cr.encrypt(message));
+		System.out.println("Fertig");
 		//String stringA = "test1";
 		//String stringB = "Test";
 		//System.out.println(hm.vergleich(stringA, stringB));
@@ -14,7 +19,7 @@ public class Testmethoden {
 		//System.out.println("Die Summe des Arrays beträgt: " + hm.intAddieren(array));
 		
 		//System.out.println("Der Durchschnitt beträgt: " + hm.schnitt( array));
-		Scanner s = new Scanner(System.in);
+		/*Scanner s = new Scanner(System.in);
 		System.out.println("Bitte geben Sie p ein:");
 		double p = s.nextDouble();
 		System.out.println("Bitte geben Sie q ein:");
@@ -27,7 +32,8 @@ public class Testmethoden {
 		if (erg.length == 2){
 			for (int i=0; i<= erg.length -1; i++)
 				System.out.println(erg[i]);
-		}
+				
+		}*/
 		
 		
 	}
