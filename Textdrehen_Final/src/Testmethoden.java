@@ -7,9 +7,16 @@ public class Testmethoden {
 		
 		//Hilfsmethoden hm = new Hilfsmethoden();
 		String message = new String();
+		String cryptoMessage = new String();
+		
 		message = "Hallo Test";
 		Crypto cr = new Crypto();
-		System.out.println(cr.encrypt(message));
+		cryptoMessage = cr.encrypt(message);
+		
+		
+		System.out.println("Plain: " + message);
+		System.out.println("Encrypted: " + cryptoMessage);
+		
 		System.out.println("Fertig");
 		//String stringA = "test1";
 		//String stringB = "Test";
