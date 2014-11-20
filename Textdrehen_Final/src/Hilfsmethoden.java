@@ -65,5 +65,70 @@ public class Hilfsmethoden {
 		
 	}
 	
+	public int quersumme(int zahl){
+		
+		int querSumme =0;
+		int zahlLenght = 0;
+		double ex = 0;
+		String zahlString = new String();
+		zahlString = ""+zahl;
+		
+		for(int i = 0;i <= zahlString.length() -1; i++){
+			
+			querSumme += Character.getNumericValue(zahlString.charAt(i));	
+			
+		}		
+		return querSumme;
+	}
 	
+	public int[] baue (int laenge){
+		int[] array = new int[laenge];
+		
+		for (int i = 0; i< laenge; i++){
+			
+			array[i] = (int) (Math.random() * 10);
+			
+			
+		}
+		return array;
+		
+	}
+	
+	public String toString(int[] array){
+
+		
+		String s = "[";
+		
+		
+		for (int i = 0; i < array.length; i++){
+			
+			s += array[i];
+			if (i < array.length-1) s += ",";
+			
+		}
+		
+		
+		return s +"]";
+		
+		
+	}
+	
+	public int[] verbinde(int[] array1, int[] array2){
+		
+		int gesamtLaenge = array1.length + array2.length;
+		int[] zusammen = new int[gesamtLaenge];
+		
+		for (int i=0; i < array1.length; i++)
+			
+			zusammen[i]= array1[i];
+		
+		for (int i = 0; i < array2.length; i++)
+			
+			zusammen[i + array1.length] = array2[i];
+		
+		
+		
+		
+		return zusammen;
+	}
 }

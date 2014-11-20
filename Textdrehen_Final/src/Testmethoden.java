@@ -5,19 +5,35 @@ public class Testmethoden {
 
 	public static void main(String[] args) {
 		
-		//Hilfsmethoden hm = new Hilfsmethoden();
-		String message = new String();
-		String cryptoMessage = new String();
+		Hilfsmethoden hm = new Hilfsmethoden();
+		//String message = new String();
+		//String cryptoMessage = new String();
+		//int zahl = 1234;
+		//int qS = 0;
 		
-		message = "Hallo Test";
-		Crypto cr = new Crypto();
-		cryptoMessage = cr.encrypt(message);
+
+		int[] array1 = hm.baue(5);
+		int[] array2 = hm.baue(3);
+		int[] zusammen = hm.verbinde(array1, array2);
+		System.out.println(hm.toString(zusammen));
+		
+		//for (int i=0; i<=10; i++)		//verwendung der Methoden toString und baue
+			//System.out.println(hm.toString(hm.baue(i)));
 		
 		
-		System.out.println("Plain: " + message);
-		System.out.println("Encrypted: " + cryptoMessage);
+		//qS = hm.quersumme(zahl);
+		//System.out.println(qS);
+		//message = "Hallo Test";
+		//Crypto cr = new Crypto();
+		//cryptoMessage = cr.encrypt(message);
 		
-		System.out.println("Fertig");
+		
+		
+		
+		//System.out.println("Plain: " + message);
+		//System.out.println("Encrypted: " + cryptoMessage);
+		
+		//System.out.println("Fertig");
 		//String stringA = "test1";
 		//String stringB = "Test";
 		//System.out.println(hm.vergleich(stringA, stringB));

@@ -45,10 +45,10 @@ public class Crypto {
 	// und gibt den entschl�sselten Text als String zur�ck.
 	public String decrypt(String geheimeMessage) {
 		
-		int[] klarMessage = new int[message.length()];
-		String geheimTextString = "";
+		int[] klarMessage = new int[geheimeMessage.length()];
+		String klarTextString = "";
 
-		for (int i = 0; i < message.length(); i++) {
+		for (int i = 0; i < geheimeMessage.length(); i++) {
 			geheimeMessage[i] = key[i] ^ message.charAt(i);
 			geheimTextString += (char) geheimeMessage[i];
 		}
