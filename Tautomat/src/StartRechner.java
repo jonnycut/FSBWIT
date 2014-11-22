@@ -6,6 +6,8 @@ public class StartRechner {
 
 		Scanner s = new Scanner(System.in);
 		Rechner r = new Rechner();
+		Display display = new Display();
+		
 		
 		for (;true;){
 				String eingabe = s.next();
@@ -17,6 +19,7 @@ public class StartRechner {
 		for (int i=0; i <= eingabe.length() - 1;i++){
 			
 			r.rechnen(eingabe.charAt(i));
+					
 			
 		}
 				
@@ -26,8 +29,21 @@ public class StartRechner {
 		
 			
 		}
-	
+	/*
+	Display display = new Display();
+	for(;true;){
+			String rechenWeg = s.next();
+			if (rechenWeg.charAt(0) =='x') break;
+					
+			display.ausgabe(rechenWeg);
 		
+	}
+	*/
+	
+	
+	
+	
+	
 		
 		
 		
