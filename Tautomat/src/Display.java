@@ -20,7 +20,8 @@ public class Display {
 		String minus = "     __     ";
 		String mal = "     \\/  /\\ ";
 		String geteilt = "   /  /  /  ";
-		String gleich = " __  __     ";
+		String gleich = "     __  __ ";
+		String komma = "  0";
 		byte start = 0;
 				
 	
@@ -32,6 +33,7 @@ public class Display {
 			
 				
 			for (int i= 0; i<rechenWeg.length();i++){
+				
 							 
 					switch (rechenWeg.charAt(i)) {
 						
@@ -79,7 +81,13 @@ public class Display {
 							System.out.print(geteilt.substring(start,start+4));
 							break;
 						case '=':
-							System.out.println(gleich.substring(start, start+4));
+							System.out.print(gleich.substring(start, start+4));
+							break;
+						case ',':
+						case '.':
+							
+							System.out.print(komma.charAt(zeile));
+							
 							break;
 						default:
 							System.out.println("Zeichen an Stelle " + i + " des Strings nicht darstellbar");

@@ -172,10 +172,12 @@ public class Rechner {
 		}
 	}
 	
-	public String ausgabe(double zahl1, double zahl2, char operand, double ergebnis){
+	public void ausgabe(double zahl1, double zahl2, char operand, double ergebnis){
+		
+		Display display = new Display();
 		
 		String ausgabeString = zahl1+""+""+operand+""+""+zahl2+""+"="+ergebnis;
-		return ausgabeString;
+		System.out.println(ausgabeString);
 	}
 	
 	
