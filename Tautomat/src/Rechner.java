@@ -87,7 +87,6 @@ public class Rechner {
 				
 				default:
 					puffer2 = puffer2 *10 + Character.getNumericValue(eingabe);
-					System.out.println(puffer2);
 					break;		
 			
 			
@@ -107,8 +106,6 @@ public class Rechner {
 					break;
 				
 				case '=':
-					//System.out.println(ergebnis + ""+ operand + "" + puffer2 + "= " + ergebnis);	
-					//System.out.println("zustand: "+zustand);
 					break;
 					
 				case 'c':
@@ -177,7 +174,7 @@ public class Rechner {
 		Display display = new Display();
 		
 		String ausgabeString = zahl1+""+""+operand+""+""+zahl2+""+"="+ergebnis;
-		System.out.println(ausgabeString);
+		display.ausgabe(ausgabeString);
 	}
 	
 	
