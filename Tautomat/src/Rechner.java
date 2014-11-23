@@ -5,7 +5,7 @@ public class Rechner {
 	private double puffer1 = 0;
 	private double puffer2 = 0;
 	private double ergebnis = 0;
-	private char operand;
+	private char operand = ' ';
 	
 	
 	
@@ -32,7 +32,7 @@ public class Rechner {
 					break;
 				
 				case '=':
-					//ergebnis = berechnung(puffer1, puffer2, operand);
+					ergebnis = berechnung(ergebnis, puffer2, operand);
 					puffer1 = 0;
 					puffer2 = 0;
 					//System.out.println(ergebnis);
@@ -162,7 +162,7 @@ public class Rechner {
 				
 				
 			default:
-			
+				ausgabe(zahl1,zahl2,operand,ergebnis);
 				return ergebnis;
 				
 		
@@ -174,6 +174,7 @@ public class Rechner {
 		Display display = new Display();
 		
 		String ausgabeString = zahl1+""+""+operand+""+""+zahl2+""+"="+ergebnis;
+		if (operand == ' ') ausgabeString += ergebnis;
 		display.ausgabe(ausgabeString);
 	}
 	
