@@ -5,7 +5,7 @@ public class StartRechner {
 	public static void main(String[] args) {
 
 		Scanner s = new Scanner(System.in);
-		Rechner r = new Rechner();
+		/*Rechner r = new Rechner();
 		
 		
 		
@@ -28,8 +28,8 @@ public class StartRechner {
 		
 		
 			
-		}
-	/*
+		}*/
+	
 	Display display = new Display();
 	for(;true;){
 			String rechenWeg = s.next();
@@ -38,7 +38,7 @@ public class StartRechner {
 			display.ausgabe(rechenWeg);
 		
 	}
-	*/
+	
 	
 	
 	

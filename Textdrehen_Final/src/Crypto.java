@@ -43,7 +43,7 @@ public class Crypto {
 	
 	// Entschl�sselt den �bergebenen String mit Hilfe des geheimen Schl�ssels
 	// und gibt den entschl�sselten Text als String zur�ck.
-	public String decrypt(String geheimeMessage) {
+/*	public String decrypt(String geheimeMessage) {
 		
 		int[] klarMessage = new int[geheimeMessage.length()];
 		String klarTextString = "";
@@ -57,6 +57,6 @@ public class Crypto {
 
 		
 	}
-
+*/
 
 }
