@@ -76,4 +76,15 @@ public class Autohaus {
 		autos = parkplatz;									//der Klassenvariable autos (altes Array) wird das neue - kürzere - zugewiesen
 		
 	}
+	
+	public Auto[][] sortAuto(Auto[] autoArray){
+		String[] farbe = {"weiß", "rot", "blau", "schwarz", "grau", "gruen"};
+		
+		for (String i:farbe)
+			
+		
+		
+		return sortiertArray;
+		
+	}
 }
