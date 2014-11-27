@@ -18,7 +18,7 @@ public class AutoTest {
 			System.out.println("0 - abbrechen");
 			System.out.println("1 - zaehlen");
 			System.out.println("2 - entfernen");
-			
+			System.out.println("3 - anzeigen");
 		
 				
 			auswahl = s.nextInt();
@@ -42,6 +42,9 @@ public class AutoTest {
 					farbe = s.nextLine();
 					System.out.println("Es wurden" + ah.entferne(farbe) +" Autos der Farbe " + farbe +" entfernt");
 					break;
+				case 3:
+					ah.anzeigen();
+					break;			
 				
 				default:
 					System.out.println("Falsche Eingabe. Abgebrochen.");

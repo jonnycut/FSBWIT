@@ -20,6 +20,15 @@ public class Autohaus {
 		}
 	}
 	
+	public void anzeigen(){
+		
+		for (int i = 0; i < autos.length; i++){
+			System.out.print(autos[i]);
+			System.out.println("  "+ autos[i].getFarbe());
+		}
+
+	}
+	
 	public int zaehle(String farbe){
 		int anzahl = 0;
 		
@@ -41,10 +50,11 @@ public class Autohaus {
 				anzahl ++;
 			}
 		}
+		aufraeumen();
 		return anzahl;
 	}
 	
-	public Auto[] aufraeumen(){
+	public void aufraeumen(){
 		int laenge = 0;
 		
 		for (int i = 0; i< autos.length; i++){
@@ -52,9 +62,17 @@ public class Autohaus {
 			if (autos[i] != null) laenge++;
 		}
 		
-		parkplatz = new Auto[laenge];
+		Auto[] parkplatz = new Auto[laenge];
 		
+		for (int i = 0, j = 0; i<autos.length;i++){
+			
+			if (autos[i] != null){ 
+				parkplatz[j] = autos[i];
+				j++;
+			}	
+		}
 		
-		return autos;
+		autos = parkplatz;
+		
 	}
 }
