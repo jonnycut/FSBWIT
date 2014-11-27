@@ -22,9 +22,9 @@ public class AutoTest {
 		
 				
 			auswahl = s.nextInt();
-			s.nextLine();
+			s.nextLine();		//nextLine() liefert ab dem ersten unbehandelten Zeichen, deswegen wird hier die Zeile "geleert" 
 			
-			switch (auswahl){
+			switch (auswahl){  //abfrage, was gemacht werden soll
 				
 				case 0: 
 					System.out.println("ABGEBROCHEN!");

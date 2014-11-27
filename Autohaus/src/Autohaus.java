@@ -20,7 +20,7 @@ public class Autohaus {
 		}
 	}
 	
-	public void anzeigen(){
+	public void anzeigen(){   //gibt den Inhalt des Arrays "autos" zeilenweise aus. (inkl. der Farbe)
 		
 		for (int i = 0; i < autos.length; i++){
 			System.out.print(autos[i]);
@@ -29,13 +29,14 @@ public class Autohaus {
 
 	}
 	
-	public int zaehle(String farbe){
+	public int zaehle(String farbe){ //gibt die Anzahl von Autos einer bestimmten Farbe zurück
 		int anzahl = 0;
 		
 		for (int i = 0; i<autos.length; i++){
 			
-			if (autos[i].getFarbe().equals(farbe))  anzahl++;
-		}
+			if (autos[i].getFarbe().equals(farbe))  anzahl++; //es muss die Farbe eines Objektes 
+															  //an stelle i von autos  mit der eingegebenen Farbe verglichen werden
+		}													  //deswegen muss mit .getFarbe() die Farbe abgefragt werden
 		return anzahl;
 	}
 	
@@ -45,34 +46,34 @@ public class Autohaus {
 		
 		for (int i = 0; i< autos.length; i++){
 			
-			if (autos[i].getFarbe().equals(farbe)){
+			if (autos[i].getFarbe().equals(farbe)){			// schreibt an die Stelle, an der ein objekt (->getFarbe) die geforderte Farbe hat "null"
 				autos[i] = null;
 				anzahl ++;
 			}
 		}
-		aufraeumen();
+		aufraeumen();										//aufräumen wird aufgerufen, um NullPointerException zu vermeiden
 		return anzahl;
 	}
 	
-	public void aufraeumen(){
+	public void aufraeumen(){								
 		int laenge = 0;
 		
-		for (int i = 0; i< autos.length; i++){
+		for (int i = 0; i< autos.length; i++){				//misst die Anzahl der Autos, die nicht "null" sind
 			
 			if (autos[i] != null) laenge++;
 		}
 		
-		Auto[] parkplatz = new Auto[laenge];
+		Auto[] parkplatz = new Auto[laenge];				//ein neues Array der Klasse Autos[] mit der vorher berechneten Länge
 		
 		for (int i = 0, j = 0; i<autos.length;i++){
 			
-			if (autos[i] != null){ 
+			if (autos[i] != null){ 							// es werden zwei zähler benötigt (j und i), damit das kürzere Array nicht in einen outOfBounds läuft
 				parkplatz[j] = autos[i];
 				j++;
 			}	
 		}
 		
-		autos = parkplatz;
+		autos = parkplatz;									//der Klassenvariable autos (altes Array) wird das neue - kürzere - zugewiesen
 		
 	}
 }
