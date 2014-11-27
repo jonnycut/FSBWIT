@@ -68,8 +68,6 @@ public class Hilfsmethoden {
 	public int quersumme(int zahl){
 		
 		int querSumme =0;
-		int zahlLenght = 0;
-		double ex = 0;
 		String zahlString = new String();
 		zahlString = ""+zahl;
 		
@@ -118,17 +116,60 @@ public class Hilfsmethoden {
 		int gesamtLaenge = array1.length + array2.length;
 		int[] zusammen = new int[gesamtLaenge];
 		
-		for (int i=0; i < array1.length; i++)
+		for (int i=0; i < array1.length; i++){
 			
 			zusammen[i]= array1[i];
-		
-		for (int i = 0; i < array2.length; i++)
+		}
+		for (int i = 0; i < array2.length; i++){
 			
 			zusammen[i + array1.length] = array2[i];
-		
-		
+		}
 		
 		
 		return zusammen;
+	}
+	
+
+	public int[] primfilter(){
+		
+		int[] normArray = new int [999];
+		int[] puffer = new int[999];
+		int primLaenge = 0;
+		int x = 0;
+		
+		for (int i = 0; i<=998; i++){
+		
+			normArray[i]= i+2;
+		}
+		
+		for (int i = 0; i<=998; i++){
+			
+			if (normArray[i] != 0){
+				if (normArray[i]%2 != 0){
+					if (normArray[i]%3 !=0){
+						if (normArray[i]%5 !=0){
+							puffer[x] = normArray[i];
+							x ++;
+							primLaenge +=1;
+						}
+					}
+				}
+			}
+		}
+		
+		int[] primArray = new int[primLaenge];
+		
+		for (int i=0; i< puffer.length;i++){
+			if (puffer[i] ==0) break;
+			primArray[i] = puffer[i];
+			
+		}
+		
+		for (int i = 0 ; i< primArray.length; i++)
+			System.out.println(primArray[i]);
+		
+		
+		
+		return primArray;
 	}
 }

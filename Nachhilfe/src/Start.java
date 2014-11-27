@@ -17,7 +17,7 @@ public class Start {
 		}
 			
 		
-		
+		/*
 		int[][] array =r.array(zalte[0], zalte[1]);
 		
 		for (int x = 0; x < array.length; x++){
@@ -25,7 +25,8 @@ public class Start {
 				System.out.print(array[x][i]);
 			}
 			System.out.println();
-		}
+		}*/
+		System.out.println(r.arrayToString(r.array(zalte[0], zalte[1])));
 
 	}
 

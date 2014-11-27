@@ -45,5 +45,20 @@ public class Rechner {
 		
 	}
 	
+	public String arrayToString(int[][] array){
+		
+		String  string= new String();
+	
+		for (int x=0; x<array[0].length; x++){
+			for (int i=0; i < array.length; i++){
+				string += array[x][i];
+			}
+			if (x < string.length()-1) string +="|";
+		}
+		
+		
+		return string;
+	}
+	
 
 }
