@@ -10,7 +10,17 @@ public class StackMain {
 					
 					while (!myCStack.isEmpty())
 						System.out.println((char)(myCStack.pop()));
-					System.out.println();
+					
+					
+		CharStackString myCSStack = new CharStackString();
+					
+					myCSStack.push('a');
+					myCSStack.push('b');
+					myCSStack.push('c');
+					
+					while (!myCSStack.isEmpty())
+						System.out.println((char)(myCSStack.pop()));
+					
 					
 		
 					
@@ -22,7 +32,9 @@ public class StackMain {
 			
 			while (!myStack.isEmpty())
 				System.out.println(myStack.pop());
-			System.out.println();
+			
+			
+	
 		
 		
 		
