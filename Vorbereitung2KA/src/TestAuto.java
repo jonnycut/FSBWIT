@@ -12,22 +12,15 @@ public class TestAuto {
 		Auto[] garage = new Auto[daten.length];
 		
 		for (int i = 0; i < garage.length; i++){
-			garage[i] = new Auto();
-			garage[i].setFarbe(daten[i][0]);
-			garage[i].setKennzeichen(daten[i][1]);
-			garage[i].setHubraum(Double.valueOf(daten[i][2]));
-			garage[i].setSitzplaetze(Integer.valueOf(daten[i][3]));		
+			garage[i] = new Auto(daten[i][0], daten[i][1], Double.valueOf(daten[i][2]), Integer.valueOf(daten[i][3]), Double.toHexString((Math.random() * 10000)));
+					//(Double.toHexString(Math.random() * 100000));
+					
+	
 		}
-		System.out.println("Auto           Farbe       KZ    HR    SP");
-		
+				
 		
 		for (int i = 0; i < garage.length; i++){
-			System.out.print(garage[i] +";  ");
-			System.out.print(garage[i].getFarbe() +"; ");
-			System.out.print(garage[i].getKennzeichen() +"; ");
-			System.out.print(garage[i].getHubraum() +"; ");
-			System.out.print(garage[i].getSitzplaetze() +"; ");
-			System.out.println();
+			System.out.println(garage[i]);
 		}
 		
 		
