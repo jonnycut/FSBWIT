@@ -58,13 +58,14 @@ public class TestStackMachine {
 				case 'r':
 					System.out.println();
 					System.out.println("Bitte Int Wet eingeben: ");
-					Scanner s2= new Scanner(System.in);
-					int temp = s2.nextInt();
+					//Scanner s2= new Scanner(System.in);
+					int temp = s.nextInt();
 					intStack.push(temp);
 					break;
 					
 				case 'p':
-					puffer1 = Integer.parseInt(eingabe.substring(i+1, 5), 16);
+					String tempStr = eingabe.substring(i+1, i+5);
+					puffer1 = Integer.parseInt(tempStr, 16);
 					intStack.push(puffer1);
 					break;
 					
@@ -91,7 +92,7 @@ public class TestStackMachine {
 					intStack.deleteLast();
 					puffer2 = intStack.pop();
 					intStack.deleteLast();
-					if (puffer2 !=0) i = puffer1;
+					if (puffer2 !=0) i = puffer1 - 1;
 					
 			}
 			
