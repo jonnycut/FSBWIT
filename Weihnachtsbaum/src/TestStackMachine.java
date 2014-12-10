@@ -33,7 +33,7 @@ public class TestStackMachine {
 					intStack.deleteLast();
 					puffer2 = intStack.pop();
 					intStack.deleteLast();
-					intStack.push(puffer1-puffer2);
+					intStack.push(puffer2-puffer1);
 					break;
 				case '*':
 					puffer1 = intStack.pop();
@@ -58,7 +58,6 @@ public class TestStackMachine {
 				case 'r':
 					System.out.println();
 					System.out.println("Bitte Int Wet eingeben: ");
-					//Scanner s2= new Scanner(System.in);
 					int temp = s.nextInt();
 					intStack.push(temp);
 					break;
