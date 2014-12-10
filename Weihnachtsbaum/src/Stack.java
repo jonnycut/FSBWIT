@@ -26,7 +26,7 @@ public class Stack {
 
 		int puffer;
 		puffer = stack[stack.length -1];
-		deleteLast();
+		//deleteLast();
 		
 		return puffer; 
 	}
