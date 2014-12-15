@@ -48,9 +48,12 @@ public class TestSort {
 				
 				case 3:
 					arraySort aR = new arraySort();
-					String[][] daten = {{"true", "NegerEier","false","0.1"},
-										{"true","Navel", "false","0.5"},
-										{"false","Blut","true","0.4"}
+					String[][] daten = {{"true", "NashornEier","false","0.1"},
+										{"true","Pavel", "false","0.5"},
+										{"true","ashton","true","0.9"},
+										{"true","ZehrLecker","true","0.7"},
+										{"false","Blut","true","0.4"},
+										
 									   };
 					Orange[] orangen = new Orange[daten.length];
 					
@@ -64,12 +67,29 @@ public class TestSort {
 					for(Orange k:orangen) 
 						System.out.println(k.getGewicht());  //ende ausgabe unsortiert
 					
-					aR.obstSort(orangen);
-					System.out.println();
+					System.out.println("1 - nach groesse");
+					System.out.println("2 - nach Sorte");
+					eingabe = s.nextInt();
 					
-					for(Orange k: orangen)
-						System.out.println(k.getGewicht());
+					switch(eingabe){
 					
+					case 1:
+						aR.obstSort(orangen);
+						System.out.println();
+						
+						for(Orange k: orangen)
+							System.out.println(k.getGewicht());
+						break;
+					
+					case 2:
+						aR.obstSortSorte(orangen);
+						System.out.println();
+						
+						for(Orange k: orangen)
+							System.out.println(k.getSorte());
+						break;
+						
+					}
 					
 					break;
 					
