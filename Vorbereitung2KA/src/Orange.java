@@ -19,7 +19,7 @@ public class Orange {
 		
 	}
 	
-	public Orange(boolean kerne, String sorte, double gewicht, boolean reif){
+	public Orange(boolean kerne, String sorte,boolean reif, double gewicht){
 		this(kerne, sorte, gewicht);
 		this.reif = reif;		
 	}

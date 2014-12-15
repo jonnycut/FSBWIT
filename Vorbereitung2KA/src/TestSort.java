@@ -47,20 +47,32 @@ public class TestSort {
 				break;
 				
 				case 3:
-					
-					String[][] daten = {{"true", "Navel"},
-										{"true","Navel", "false","0,5"},
-										{"false","Blut","0.4"}
+					arraySort aR = new arraySort();
+					String[][] daten = {{"true", "NegerEier","false","0.1"},
+										{"true","Navel", "false","0.5"},
+										{"false","Blut","true","0.4"}
 									   };
 					Orange[] orangen = new Orange[daten.length];
 					
 					for(int i=0; i < daten.length; i++){
-						if(daten.length == 2){
-							orangen[i] = new Orange(Boolean.parseBoolean(daten[i][0]), daten[i][1]);
-							
-						}//end if
+						
+							orangen[i] = new Orange(Boolean.parseBoolean(daten[i][0]), daten[i][1], Boolean.parseBoolean(daten[i][2]), Double.parseDouble(daten[i][3]));
+					
 					
 					} //end for	
+					
+					for(Orange k:orangen) 
+						System.out.println(k.getGewicht());  //ende ausgabe unsortiert
+					
+					aR.obstSort(orangen);
+					System.out.println();
+					
+					for(Orange k: orangen)
+						System.out.println(k.getGewicht());
+					
+					
+					break;
+					
 				} //ende Switch
 			} // ende for true
 		} //ende Main
