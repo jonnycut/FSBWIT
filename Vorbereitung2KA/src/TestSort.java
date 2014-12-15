@@ -13,6 +13,7 @@ public class TestSort {
 			
 			System.out.println("1 = Array Sort");
 			System.out.println("2 = String Sort");
+			System.out.println("3 = Organgenzeugs");
 			eingabe = s.nextInt();
 			
 		
@@ -43,10 +44,28 @@ public class TestSort {
 					}else
 						System.out.println(s1);
 						System.out.println(s2);
-			}
-		}
+				break;
+				
+				case 3:
+					
+					String[][] daten = {{"true", "Navel"},
+										{"true","Navel", "false","0,5"},
+										{"false","Blut","0.4"}
+									   };
+					Orange[] orangen = new Orange[daten.length];
+					
+					for(int i=0; i < daten.length; i++){
+						if(daten.length == 2){
+							orangen[i] = new Orange(Boolean.parseBoolean(daten[i][0]), daten[i][1]);
+							
+						}//end if
+					
+					} //end for	
+				} //ende Switch
+			} // ende for true
+		} //ende Main
 		
 
-	}
+	} //ende class
 
-}
+
