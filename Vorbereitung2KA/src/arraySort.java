@@ -58,6 +58,43 @@ public class arraySort {
 			
 	}
 	
-	
+	public void obstSort(Orange[] orangen){
+		
+		boolean tauschen = true;
+		Orange puffer = null;
+		
+		for(int j = 1; tauschen; j++){
+			tauschen = false;
+			for(int i=0; i<orangen.length-j;i++){
+				if(orangen[i].getGewicht() > orangen[i+1].getGewicht()){
+					puffer = orangen[i];
+					orangen[i]=orangen[i+1];
+					orangen[i+1] = puffer;
+					tauschen = true;
+					
+				}
+			}
+				
+				
+			}
+		}//ende obstSort
+	public void obstSortSorte(Orange[] orangen){
+		
+		boolean tauschen=true;
+		Orange puffer = null;
+		for (int j=1; tauschen;j++){
+			tauschen = false;
+			for(int i=0; i < orangen.length-j;i++){
+				if(orangen[i].getSorte().compareToIgnoreCase(orangen[i+1].getSorte())> 0){
+					puffer=orangen[i];
+					orangen[i]=orangen[i+1];
+					orangen[i+1]=puffer;
+					tauschen = true;
+					
+				} //end if
+			} //end 2. for
+			
+		} //ende 1. for
+	}
 
 }

@@ -13,6 +13,7 @@ public class TestSort {
 			
 			System.out.println("1 = Array Sort");
 			System.out.println("2 = String Sort");
+			System.out.println("3 = Organgenzeugs");
 			eingabe = s.nextInt();
 			
 		
@@ -43,10 +44,60 @@ public class TestSort {
 					}else
 						System.out.println(s1);
 						System.out.println(s2);
-			}
-		}
+				break;
+				
+				case 3:
+					arraySort aR = new arraySort();
+					String[][] daten = {{"true", "NashornEier","false","0.1"},
+										{"true","Pavel", "false","0.5"},
+										{"true","ashton","true","0.9"},
+										{"true","ZehrLecker","true","0.7"},
+										{"false","Blut","true","0.4"},
+										
+									   };
+					Orange[] orangen = new Orange[daten.length];
+					
+					for(int i=0; i < daten.length; i++){
+						
+							orangen[i] = new Orange(Boolean.parseBoolean(daten[i][0]), daten[i][1], Boolean.parseBoolean(daten[i][2]), Double.parseDouble(daten[i][3]));
+					
+					
+					} //end for	
+					
+					for(Orange k:orangen) 
+						System.out.println(k.getGewicht());  //ende ausgabe unsortiert
+					
+					System.out.println("1 - nach groesse");
+					System.out.println("2 - nach Sorte");
+					eingabe = s.nextInt();
+					
+					switch(eingabe){
+					
+					case 1:
+						aR.obstSort(orangen);
+						System.out.println();
+						
+						for(Orange k: orangen)
+							System.out.println(k.getGewicht());
+						break;
+					
+					case 2:
+						aR.obstSortSorte(orangen);
+						System.out.println();
+						
+						for(Orange k: orangen)
+							System.out.println(k.getSorte());
+						break;
+						
+					}
+					
+					break;
+					
+				} //ende Switch
+			} // ende for true
+		} //ende Main
 		
 
-	}
+	} //ende class
 
-}
+
