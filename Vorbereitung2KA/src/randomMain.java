@@ -26,6 +26,7 @@ public class randomMain {
 			System.out.println("2. - Array sortieren");
 			System.out.println("3. - Array anzeigen");
 			System.out.println("4. - Zufallsausgabe eines Datensatzes");
+			System.out.println("0. - Programm beenden");
 			
 			auswahl = s.nextInt();
 			
@@ -46,8 +47,12 @@ public class randomMain {
 					break;
 				
 				case 4:
-					//random
+					rA.random(array);
 					break;
+				
+				case 0:
+					System.out.println("Programm wird beendet");			
+					return;
 				
 				default:
 					System.out.println("Ungültige Eingabe");

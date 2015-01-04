@@ -20,6 +20,8 @@ public String[][] fuellen(String eingabe, String[][] array){
 	} //ende fuellen
 
 	public void ausgabe(String[][] array){
+		
+		
 		System.out.println("DG    |Name      | Vorname");
 		System.out.println("-------------------------");
 		for(int i=0; i< array.length;i++){
@@ -53,6 +55,20 @@ public String[][] fuellen(String eingabe, String[][] array){
 		return array;
 		
 		
+	}
+	
+	public void random(String[][] array){
+		int random;
+		
+		do{
+			random = (int) (Math.random()*10);
+		} while(random > array.length -1);
+		
+		System.out.print(array[random][0]+"  |");
+		System.out.print(array[random][1]+"  |");
+		System.out.print(array[random][2]+"  |");
+	
+			
 	}
 
 } //end class
