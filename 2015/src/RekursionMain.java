@@ -3,8 +3,10 @@ public class RekursionMain {
 
 	public static void main(String[] args) {
 		//System.out.println(fib(10));
-		System.out.println(stringDrehen("ABCD"));
-	}
+		//System.out.println(stringDrehen("ABCD"));
+		
+	
+	} //end Main
 	
 	public static void runterZaehlen(int zahl){
 		
@@ -38,6 +40,22 @@ public class RekursionMain {
 			
 		}
 		return string;
+	}//end drehen
+	
+	public static int[] drehen(int[] array, int pos){
+		if(pos>= array.length) return new int[array.length]; 	//Abbruchbedingung
+		
+		int[] arrayBlau = drehen(array, pos+1); 				//pos+1 = Hinweg Schrittzähler
+		arrayBlau[array.length-1-pos] = array[pos];				//rückweg 
+		
+		return arrayBlau; 										//rückweg
+	}
+	
+	public static void drehen2(int[] array, int pos){
+		if (pos>=array.length) return;
+		int apfel = array[pos];
+		drehen(array, pos+1); 
+		array[array.length -1-pos] = apfel;
 	}
 
 }
