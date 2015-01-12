@@ -55,7 +55,7 @@ public class RekursionMain {
 		if (pos>=array.length) return;
 		int apfel = array[pos];
 		drehen(array, pos+1); 
-		array[array.length -1-pos] = apfel;
+		array[array.length -1-pos] = apfel; //ohne rückgabe
 	}
 
 }
