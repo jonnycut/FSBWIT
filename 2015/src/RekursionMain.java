@@ -4,7 +4,7 @@ public class RekursionMain {
 	public static void main(String[] args) {
 		//System.out.println(fib(10));
 		//System.out.println(stringDrehen("ABCD"));
-		fibOpt(100);
+		System.out.println(fak(4));
 		
 	
 	} //end Main
@@ -52,6 +52,29 @@ public class RekursionMain {
 			if(i <=2)System.out.println("1");	
 		} //end for
 	}//end fibOpt
+	
+	public static int summe(int a, int b){
+		if(b==0) return a;
+		return summe(a+1,b-1);
+	} //end summe
+	
+	public static int multi(int a,int b){
+		
+		if (b<=1) return a;
+		
+		return summe(a,multi(a,b-1));
+	} //end multi
+	
+	public static int pot(int a, int b){
+		if (b==0) return 1;
+		return multi(pot(a,b-1),a);
+	} //end potenz
+	
+	public static int fak(int a){
+		if(a==1) return 1;
+		return multi(a,fak(a-1));
+	}
+		
 	
 	
 	public static String stringDrehen(String string){
