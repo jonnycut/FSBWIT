@@ -4,6 +4,7 @@ public class RekursionMain {
 	public static void main(String[] args) {
 		//System.out.println(fib(10));
 		//System.out.println(stringDrehen("ABCD"));
+		fibOpt(100);
 		
 	
 	} //end Main
@@ -18,7 +19,6 @@ public class RekursionMain {
 	}
 	
 	public static int fib(int x){
-		int x1 = x;
 		
 		if(x==1){
 			
@@ -32,7 +32,27 @@ public class RekursionMain {
 			
 		}
 		
+	
+		
 	} //end fib
+	
+	public static void fibOpt(long x){
+		long ergebnis=0;
+		long a=1;
+		long b=1;
+		
+		for (long i=1; i<=x;i++){
+			if(i>2){ 
+				ergebnis=a+b;
+				System.out.println(ergebnis);
+				a=b;
+				b = ergebnis;
+			} //end if
+			
+			if(i <=2)System.out.println("1");	
+		} //end for
+	}//end fibOpt
+	
 	
 	public static String stringDrehen(String string){
 		if(string.length()!=0){

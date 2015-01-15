@@ -26,7 +26,7 @@ public class ChainedElement {
 	public void setNext(ChainedElement next) {
 		this.next = next;
 	}
-
+	
 	
 	
 	
