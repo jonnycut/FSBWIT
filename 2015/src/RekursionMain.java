@@ -4,8 +4,9 @@ public class RekursionMain {
 	public static void main(String[] args) {
 		//System.out.println(fib(10));
 		//System.out.println(stringDrehen("ABCD"));
-		System.out.println(fak(4));
-		
+		//System.out.println(fak(4));
+		int[] array = {10,9,8,7,6,5,4,3,2,1,0,-1,-502};
+		System.out.println(minimal(array));
 	
 	} //end Main
 	
@@ -99,6 +100,18 @@ public class RekursionMain {
 		int apfel = array[pos];
 		drehen(array, pos+1); 
 		array[array.length -1-pos] = apfel; //ohne rückgabe
+	}
+	
+	public static int minimal(int[] array){ //Schnittstelle nach außen, weil public, ruft die private Methode auf, um falsche übergabeparameter zu vermeiden
+		return minimal(array,1,array[0]);
+	}
+	
+	private static int minimal(int[] array, int pos, int min){
+		if(pos>=array.length)
+			return min;
+		if(array[pos] < min)
+			min = array[pos];
+			return minimal(array,pos+1,min);
 	}
 
 }
