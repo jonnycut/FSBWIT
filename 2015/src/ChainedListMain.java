@@ -12,12 +12,18 @@ public class ChainedListMain {
 		
 		System.out.println(CL.getSizeRekursiv());
 		System.out.println(CL.getIndex("erster"));
-		System.out.println("Deleted String: " +CL.removeAt(7));
+		//System.out.println("Deleted String: " +CL.removeAt(7));
 		System.out.println();
+		CL.add("aaa");
+		CL.addEnd("NULLTER");
+		
 		System.out.println("Neue Liste:");
 		for (int i=0; i<CL.getSize(); i++){
 			System.out.println(CL.atIndex(i));
 		}
+		
+		System.out.println();
+		System.out.println("kleinster ist: " + CL.min());
 		
 			
 		

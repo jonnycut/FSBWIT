@@ -143,11 +143,46 @@ public class ChainedList {
 			return puffer.getValue();
 			
 		}else return removeAt(index, element.getNext(), counter -1);
+	} //end removeAt
+	
+	public void addEnd(String value){
+		if (first == null) 
+			first = new ChainedElement(value);
+		else
+			addEnd(value, first);
+		
+		
+	}//end addEnd (public)
+	
+	private void addEnd(String value, ChainedElement element){
+		
+		if(element.getNext() ==null){
+			element.setNext(new ChainedElement(value));
+			return;
+		}else{ 
+			addEnd(value, element.getNext());
+		}
+		
+	}//end addEnd (private)
+	
+	
+//-------------------------------- min - liefert den lexi-kleinsten String zurück---------------------------------------//		
+	public String min(){
+		if(first == null)
+			return null;
+		else		
+			return min(first, first.getValue());
 	}
-	
-	
-	
-	
+
+	private String min(ChainedElement element, String kleinster){
+		if (element == null) return kleinster;
+		
+		if(kleinster.compareToIgnoreCase(element.getValue()) > 0)
+			return min(element.getNext(),element.getValue());
+		else 
+			return min(element.getNext(),kleinster);
+	}//end min
+//-----------------------------------------------EndRekursion------------------------------------------------------------//	
 	
 	
 	
