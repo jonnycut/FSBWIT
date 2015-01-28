@@ -14,7 +14,7 @@ public class ChainedListMain {
 		System.out.println(CL.getIndex("erster"));
 		//System.out.println("Deleted String: " +CL.removeAt(7));
 		System.out.println();
-		CL.add("aaa");
+		CL.add("a");
 		CL.addEnd("NULLTER");
 		
 		System.out.println("Neue Liste:");
@@ -24,6 +24,7 @@ public class ChainedListMain {
 		
 		System.out.println();
 		System.out.println("kleinster ist: " + CL.min());
+		System.out.println("Kürzester ist: " + CL.shortest());
 		
 			
 		

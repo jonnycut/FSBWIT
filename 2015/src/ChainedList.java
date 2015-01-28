@@ -166,6 +166,7 @@ public class ChainedList {
 	}//end addEnd (private)
 	
 	
+	
 //-------------------------------- min - liefert den lexi-kleinsten String zurück---------------------------------------//		
 	public String min(){
 		if(first == null)
@@ -182,9 +183,23 @@ public class ChainedList {
 		else 
 			return min(element.getNext(),kleinster);
 	}//end min
-//-----------------------------------------------EndRekursion------------------------------------------------------------//	
+//-----------------------------------------------End 	min-----------------------------------------------------------//	
 	
+	public String shortest(){
+		if(first == null)
+			return null;
+		else
+			return shortest(first, first.getValue());
+	}
 	
+	private String shortest(ChainedElement element, String shortest){
+		if(element == null) return shortest;
+		if (element.getValue().length() < shortest.length())
+			return shortest(element.getNext(),element.getValue());
+		else
+			return shortest(element.getNext(), shortest);
+		
+	}
 	
 	
 	
