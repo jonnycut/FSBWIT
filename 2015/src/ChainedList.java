@@ -117,9 +117,11 @@ public class ChainedList {
 		}else return atIndex(index,element.getNext(),counter -1);
 		
 	}
+//-------------------------------- RemoveAt - deletes element at [INDEX]---------------------------------------//	
 	
 	public String removeAt(int index){
 		if(isEmpty()) return "Index "+index + " nicht vorhanden";
+		if(index>getSize()-1) return "Index "+index + " nicht vorhanden";
 		return removeAt(index,first,getSize()-1);
 	}
 	
@@ -127,12 +129,13 @@ public class ChainedList {
 		ChainedElement puffer;
 		if(element.getNext()==null) 
 			return "Index "+index+" nicht vorhanden!";
+		
 		if(index == getSize()-1){
 			puffer = first;
 			first = first.getNext();
 			return puffer.getValue();
 		}
-		if(counter -1 ==0){ 
+		if(counter-1 ==0){ 
 			puffer = element.getNext();
 			element.setNext(null);
 			return puffer.getValue();
@@ -144,6 +147,8 @@ public class ChainedList {
 			
 		}else return removeAt(index, element.getNext(), counter -1);
 	} //end removeAt
+//-------------------------------------------Ende RemoveAt----------------------------------------------------//	
+	
 	
 	public void addEnd(String value){
 		if (first == null) 
