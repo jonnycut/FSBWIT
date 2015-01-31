@@ -6,7 +6,7 @@ public class ListMain {
 		
 		CList CL = new CList();
 		
-		for(int i=0;i<5;i++){
+		for(int i=0;i<10;i++){
 			CL.add((int)(Math.random()*10));
 		}
 		System.out.println("Normal:  " +CL.toString());
@@ -15,9 +15,13 @@ public class ListMain {
 
 		System.out.println("An index 0 steht: "+CL.atIndex(0));
 		System.out.println("First ist: " + CL.first.getValue());
-		CL.addAtIndex(20,6);
-		System.out.println("Neue Liste: "+ CL.toString());
-		System.out.println("Neues first: " +CL.first.getValue());
+		//CL.addAtIndex(20,6);
+		//System.out.println("Neue Liste: "+ CL.toString());
+		//System.out.println("Neues first: " +CL.first.getValue());
+		System.out.println("das Größste Element ist: " +CL.getHighest().getValue());
+		System.out.println(CL.sort().toString());
+		System.out.println("Alte Liste: " + CL.toString());
+		
 	}
 
 }
