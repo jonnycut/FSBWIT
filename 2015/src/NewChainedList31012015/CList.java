@@ -120,6 +120,8 @@ public class CList {
 	}
 
 //----------------------------------------------------------------------//
+// entfernt übergebenes Element (rElement)
+	
 	public void remove(CElement rElement){
 		if(isEmpty()) return;
 		remove(rElement, first);
@@ -128,11 +130,11 @@ public class CList {
 	private void remove(CElement rElement, CElement element){
 		if(element == null) return;
 		if(first==rElement){
-			pop();
+			pop(); //wenn das zu entfernende Element das erste der Liste ist, wird pop() genutzt.
 			return;
 		}
 		if(element.getNext() == rElement){
-			element.setNext(rElement.getNext());
+			element.setNext(rElement.getNext()); //next des Elements auf das Folgeelement der Liste setzen (damit löschen von rElement)
 			return;
 		}
 		remove(rElement, element.getNext());
@@ -140,11 +142,12 @@ public class CList {
 	}
 	
 //----------------------------------------------------------------------//
-
+// Gibt höchstes Element einer Liste zurück
+	
 	public CElement getHighest(){
 		if(isEmpty()) return null;
 		
-		return getHighest(this.first,this.first);
+		return getHighest(this.first,this.first); 
 	}
 	
 	private CElement getHighest(CElement element, CElement high){
@@ -157,24 +160,27 @@ public class CList {
 
 	
 //----------------------------------------------------------------------//
+//erstellt eine neue Liste, in die die Elemente der alten Liste absteigend einsortiert werden.
+//die alte Liste wird während des Vorgangs geleert.
 	public CList sort(){
 		if(isEmpty()) return this;
 		CList CLS = new CList();
 		CElement puffer = this.getHighest();
-		CElement oldListFirst = this.first;
+		
 		CLS.first= puffer;
 		remove(puffer);
 		CLS.first.setNext(null);
 		
 		CElement newElement = CLS.first;
 		
-		while(oldListFirst !=null){
-			puffer= this.getHighest();
-			newElement.setNext(puffer);
-			this.remove(puffer);
-			newElement = newElement.getNext();
-			newElement.setNext(null);
-			oldListFirst = this.first;
+		while(!this.isEmpty()){
+			puffer= this.getHighest(); 			//höchstes Element der alten Liste in Puffer schreiben
+			newElement.setNext(puffer);			//höchstes Element der alten Liste als next des aktuellen Elements der neuen Liste setzen
+			this.remove(puffer); 				//letztes höchstes der alten Liste löschen (remove())
+			newElement = newElement.getNext(); 	//zu bearbeitendes Element eins weiter setzen
+			newElement.setNext(null); 			//next des Elements der sortierten Liste auf null 
+												//-> um relationen der alten Liste zu löschen und StackOverflow zu verhindert
+			
 			
 			
 		}
