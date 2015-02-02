@@ -120,7 +120,7 @@ public class CList {
 	}
 
 //----------------------------------------------------------------------//
-// entfernt ¸bergebenes Element (rElement)
+// entfernt ÔøΩbergebenes Element (rElement)
 	
 	public void remove(CElement rElement){
 		if(isEmpty()) return;
@@ -134,7 +134,7 @@ public class CList {
 			return;
 		}
 		if(element.getNext() == rElement){
-			element.setNext(rElement.getNext()); //next des Elements auf das Folgeelement der Liste setzen (damit lˆschen von rElement)
+			element.setNext(rElement.getNext()); //next des Elements auf das Folgeelement der Liste setzen (damit lÔøΩschen von rElement)
 			return;
 		}
 		remove(rElement, element.getNext());
@@ -142,7 +142,7 @@ public class CList {
 	}
 	
 //----------------------------------------------------------------------//
-// Gibt hˆchstes Element einer Liste zur¸ck
+// Gibt h√∂chstes Element einer Liste zur√ºck
 	
 	public CElement getHighest(){
 		if(isEmpty()) return null;
@@ -152,16 +152,32 @@ public class CList {
 	
 	private CElement getHighest(CElement element, CElement high){
 		if(element==null)return high;
+		
 		if(element.getValue()>high.getValue())
 			return getHighest(element.getNext(),element);
 		else
 			return getHighest(element.getNext(), high);
 	}
-
+//----------------------------------------------------------------------//
+	
+	public CElement getLow(){
+		if(isEmpty()) return null;
+		
+		return getLow(this.first,this.first);
+	}
+	
+	private CElement getLow(CElement element, CElement low){
+		if(element == null) return low;
+		
+		if(element.getValue()< low.getValue())
+			return getLow(element.getNext(), element);
+		else
+			return getLow(element.getNext(),low);
+	}
 	
 //----------------------------------------------------------------------//
 //erstellt eine neue Liste, in die die Elemente der alten Liste absteigend einsortiert werden.
-//die alte Liste wird w‰hrend des Vorgangs geleert.
+//die alte Liste wird wÔøΩhrend des Vorgangs geleert.
 	public CList sort(){
 		if(isEmpty()) return this;
 		CList CLS = new CList();
@@ -174,12 +190,12 @@ public class CList {
 		CElement newElement = CLS.first;
 		
 		while(!this.isEmpty()){
-			puffer= this.getHighest(); 			//hˆchstes Element der alten Liste in Puffer schreiben
-			newElement.setNext(puffer);			//hˆchstes Element der alten Liste als next des aktuellen Elements der neuen Liste setzen
-			this.remove(puffer); 				//letztes hˆchstes der alten Liste lˆschen (remove())
+			puffer= this.getHighest(); 			//h√∂chstes Element der alten Liste in Puffer schreiben
+			newElement.setNext(puffer);			//h√∂chstes Element der alten Liste als next des aktuellen Elements der neuen Liste setzen
+			this.remove(puffer); 				//letztes hÔøΩchstes der alten Liste l√∂schen (remove())
 			newElement = newElement.getNext(); 	//zu bearbeitendes Element eins weiter setzen
 			newElement.setNext(null); 			//next des Elements der sortierten Liste auf null 
-												//-> um relationen der alten Liste zu lˆschen und StackOverflow zu verhindert
+												//-> um relationen der alten Liste zu l√∂schen und StackOverflow zu verhindert
 			
 			
 			
@@ -187,7 +203,32 @@ public class CList {
 		return CLS;
 	}
 	
+//----------------------------------------------------------------------//
+//liefert eine aufsteigend Sortierte neue Liste zur√ºck
+	public CList sortAuf(){
+		if(isEmpty()) return this;
+		
+		CList CLS = new CList();
+		CElement puffer = this.getLow();
+		CLS.first = puffer;
+		remove(puffer);
+		CLS.first.setNext(null);
+		
+		CElement newElement = CLS.first;
+		
+		while(!this.isEmpty()){
+			puffer = this.getLow();
+			newElement.setNext(puffer);
+			this.remove(puffer);
+			newElement = newElement.getNext();
+			newElement.setNext(null);
+		}
+		
+		return CLS;
+	}
 
+//----------------------------------------------------------------------//
+//Kopiert eine Liste 1:1 und gibt diese Kopie zur√ºck
 	
 	
 	
