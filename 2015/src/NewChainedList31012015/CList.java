@@ -221,8 +221,8 @@ public class CList {
 			newElement.setNext(puffer);
 			this.remove(puffer);
 			newElement = newElement.getNext();
-			newElement.setNext(null);
-		}
+			
+		}newElement.setNext(null);
 		
 		return CLS;
 	}
