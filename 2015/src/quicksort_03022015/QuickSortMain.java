@@ -5,6 +5,7 @@ public class QuickSortMain {
 	
 	
 	public static void main(String[] args) {
+		
 	String[] array={"b","f","a","d","c","e"};
 	String[][] array2={	{"1","c"},
 						{"2","a"},
@@ -16,25 +17,35 @@ public class QuickSortMain {
 						{"3","c"},
 						{"3","a"}	};
 	
-	System.out.println("AltesArray:");
-	for(int i=0;i<array2.length;i++){
-		for(int j=0;j<array2[i].length;j++)
-			System.out.print(array2[i][j]);
-			System.out.println();
-	}
-			
+	System.out.println("altes Array:");
+	for(String k:array)
+		System.out.print(k+";");
 	
 	
+	quickSort(array,0,array.length-1);
+	System.out.println();
 	
-	quickSort2(array2,0,array2.length-1);
-	
-	System.out.println("NeuesArray:");
-	
-	for(int i=0;i<array2.length;i++){
-		for(int j=0;j<array2[i].length;j++)
-			System.out.print(array2[i][j]);
-			System.out.println();
-	}
+	for(String k:array)
+		System.out.print(k+";");
+//	System.out.println("AltesArray:");
+//	for(int i=0;i<array2.length;i++){
+//		for(int j=0;j<array2[i].length;j++)
+//			System.out.print(array2[i][j]);
+//			System.out.println();
+//	}
+//			
+//	
+//	
+//	
+//	quickSort2(array2,0,array2.length-1);
+//	
+//	System.out.println("NeuesArray:");
+//	
+//	for(int i=0;i<array2.length;i++){
+//		for(int j=0;j<array2[i].length;j++)
+//			System.out.print(array2[i][j]);
+//			System.out.println();
+//	}
 	
 	
 	
@@ -44,27 +55,28 @@ public class QuickSortMain {
 
 	}
 	
-	public static void quickSort(String[] array, int start, int ende){
-		String pivot = array[(start+ende)/2];
-		int cL=start;
-		int cR=ende;
+	public static void quickSort(String[] array, int start, int end){
+		
+		String pivot = array[(start+end)/2];
+		int cL = start;
+		int cR = end;
 		
 		while(cL<=cR){
-			while(array[cL].compareToIgnoreCase(pivot) <0) cL++;
-			while(array[cR].compareToIgnoreCase(pivot) >0) cR--;
-				if(cL<=cR){
-					String puffer = array[cL];
-					array[cL]=array[cR];
-					array[cR]=puffer;
-					cL++;
-					cR--;
-					
-				}
-			
+		
+			while(array[cL].compareToIgnoreCase(pivot) < 0) cL++;
+			while(array[cR].compareToIgnoreCase(pivot) > 0) cR --;
+			if(cL<=cR){
+				String puffer=array[cL];
+				array[cL]=array[cR];
+				array[cR]=puffer;
+				cL++;
+				cR--;
+			}
 		}
+		
 		if(cR>start) quickSort(array,start,cR);
-		if(cL<ende) quickSort(array,cL,ende);
-			
+		if(cL<end) quickSort(array,cL,end);	
+		
 	}//end quicksort einfach
 	
 	public static void quickSort2(String[][] array, int start, int end){
