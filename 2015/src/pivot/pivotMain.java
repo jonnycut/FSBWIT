@@ -4,7 +4,7 @@ public class pivotMain {
 
 	public static void main(String[] args) {
 		String s = "UBPGATNS";
-		char[] array = {'U','B','P','G','A','T','N','S'};
+		char[] array = {'C','B','P','G','U','T','N','S'};
 		
 		//System.out.println(s);
 		//System.out.println(quickSort(s));
