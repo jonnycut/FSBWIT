@@ -228,7 +228,16 @@ public class CList {
 	}
 
 //----------------------------------------------------------------------//
-//Kopiert eine Liste 1:1 und gibt diese Kopie zurück
+//gibt eine reverse Kopie der Liste zuück
+	public CList reverse(){
+		if(first == null) return this;
+		
+		reverse(first);
+	}
+	
+	private CList(Element element){
+		
+	}
 	
 	
 	
