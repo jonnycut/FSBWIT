@@ -1,39 +1,25 @@
 package Subnetting;
 
 public class IPAdresse {
-	String[] bin;
-	String dez;
-	long gZahl;
+	int ipAdd;
 	
+	
+	
+
+	public IPAdresse(int first, int second, int third, int fourth){
+		this.ipAdd = dotToInt(first,second,third,fourth);
+	}
 	
 	public IPAdresse(String dez){
-		if (dez.length()>15) return; //ToDo: Fehleranzeige
-		this.dez = dez;
-		this.bin=toBin(dez);
+		String[] bin = dez.split("\\.");
+		this.ipAdd = dotToInt(Integer.parseInt(bin[0]),Integer.parseInt(bin[1]),Integer.parseInt(bin[2]),Integer.parseInt(bin[3]));
 	}
 	
-	public IPAdresse(long gZahl){
-		this.gZahl=gZahl;
-		
-		String[] bin=new String[4];
-		String puffer = Long.toBinaryString(gZahl);
-		int start=0;
-		int end=8;
-		int tmp=0;
-		String dez="";
-		
-		for(int i=0; i<4;i++){
-			bin[i]=puffer.substring(start,end);
-			tmp = Integer.parseInt(bin[i],2);
-			dez=dez+tmp+".";
-			start=end;
-			end = end +8;
-			
-		}
-		this.dez=dez;
-		this.bin=bin;
-		
+	public int dotToInt(int first, int second, int third, int fourth){
+		return first * 16777216 + second * 65536 + third * 256 + fourth;
 	}
+	
+	
 	
 	public String[] toBin(String dez){
 		
@@ -61,4 +47,29 @@ public class IPAdresse {
 	}
 	
 
-}
+}//end class
+
+
+
+//public IPAdresse(long gZahl){
+//	this.gZahl=gZahl;
+//	
+//	String[] bin=new String[4];
+//	String puffer = Long.toBinaryString(gZahl);
+//	int start=0;
+//	int end=8;
+//	int tmp=0;
+//	String dez="";
+//	
+//	for(int i=0; i<4;i++){
+//		bin[i]=puffer.substring(start,end);
+//		tmp = Integer.parseInt(bin[i],2);
+//		dez=dez+tmp+".";
+//		start=end;
+//		end = end +8;
+//		
+//	}
+//	this.dez=dez;
+//	this.bin=bin;
+//	
+//}
