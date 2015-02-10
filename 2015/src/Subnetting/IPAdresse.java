@@ -1,18 +1,37 @@
 package Subnetting;
 
 public class IPAdresse {
-	int ipAdd;
+	private int ipAdd;
+	private String ipBin;
 	
 	
 	
+	public IPAdresse(int ipAdd){
+		this.ipAdd=ipAdd;
+		ipBin=Integer.toBinaryString(ipAdd);
+		
+		while(ipBin.length()<32){
+			ipBin="0"+ipBin;
+		}
+	}
 
 	public IPAdresse(int first, int second, int third, int fourth){
 		this.ipAdd = dotToInt(first,second,third,fourth);
+		ipBin=Integer.toBinaryString(ipAdd);
+		while(ipBin.length()<32){
+			ipBin="0"+ipBin;
+		}
+	
 	}
 	
 	public IPAdresse(String dez){
 		String[] bin = dez.split("\\.");
 		this.ipAdd = dotToInt(Integer.parseInt(bin[0]),Integer.parseInt(bin[1]),Integer.parseInt(bin[2]),Integer.parseInt(bin[3]));
+		ipBin=Integer.toBinaryString(ipAdd);
+		while(ipBin.length()<32){
+			ipBin="0"+ipBin;
+		}
+		
 	}
 	
 	public int dotToInt(int first, int second, int third, int fourth){
@@ -24,14 +43,14 @@ public class IPAdresse {
 	public String[] toBin(String dez){
 		
 		String[] arrayD = dez.split("\\.");
-		
+		int[] arrayID = new int[4];
 		
 		
 		String[] arrayB = new String[4];
 		
-		for(int i=0; i<=3;i++){
+		for(int i=0; i<=arrayD.length;i++){
 			
-			int[] arrayID = new int[4];
+			
 			arrayID[i]=Integer.parseInt(arrayD[i]);	
 			arrayB[i]=Integer.toBinaryString(arrayID[i]);
 			while(arrayB[i].length()<8){
@@ -41,9 +60,32 @@ public class IPAdresse {
 		
 		return arrayB;
 	}
+	public String getIpBin(){
+		return ipBin;
+	}
+	
+	public int getOkt(int okt){
+		
+		switch(okt){
+			
+			case 1:
+				return Integer.parseInt(ipBin.substring(0, 8),2);
+			case 2:
+				return Integer.parseInt(ipBin.substring(8, 16),2);
+			case 3:
+				return Integer.parseInt(ipBin.substring(16, 24),2);
+			case 4:
+				return Integer.parseInt(ipBin.substring(24),2);
+			default:
+				return -1;
+				
+		}
+		
+	}
 	
 	public String toString(){
-		return "[IP: "+dez+"][Bin: "+bin[0]+"."+bin[1]+"."+bin[2]+"."+bin[3]+ "]";
+		
+		return "[IP:" + getOkt(1)+"."+ getOkt(2)+"."+ getOkt(3)+"."+getOkt(4)+"][Bin: "+ipBin+"]";
 	}
 	
 
