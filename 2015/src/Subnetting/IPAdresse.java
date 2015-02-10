@@ -2,15 +2,15 @@ package Subnetting;
 
 public class IPAdresse {
 	private int ipAdd;
-	private String ipBin;
+	private String ipBin;	//contains binari String of ipAdd
 	
 	
 	
-	public IPAdresse(int ipAdd){
+	public IPAdresse(int ipAdd){				
 		this.ipAdd=ipAdd;
 		ipBin=Integer.toBinaryString(ipAdd);
 		
-		while(ipBin.length()<32){
+		while(ipBin.length()<32){ 				//ipBin auf 32 Stellen auffüllen
 			ipBin="0"+ipBin;
 		}
 	}
@@ -35,12 +35,12 @@ public class IPAdresse {
 	}
 	
 	public int dotToInt(int first, int second, int third, int fourth){
-		return first * 16777216 + second * 65536 + third * 256 + fourth;
+		return first * 16777216 + second * 65536 + third * 256 + fourth;	//erwartet 4 integer, wandelt diese in eine Ganzzahl um
 	}
 	
 	
 	
-	public String[] toBin(String dez){
+	public String[] toBin(String dez){					//zZt. nicht genutzt, wandelt eine IP in der dot Schreibweise in ein Array[4] um (oktetts)
 		
 		String[] arrayD = dez.split("\\.");
 		int[] arrayID = new int[4];
@@ -60,11 +60,12 @@ public class IPAdresse {
 		
 		return arrayB;
 	}
+	
 	public String getIpBin(){
 		return ipBin;
 	}
 	
-	public int getOkt(int okt){
+	public int getOkt(int okt){				//liefert das entsprechende Oktett der IP zur basis 10 zurück (ausgehend vom Binärstring)
 		
 		switch(okt){
 			
