@@ -6,8 +6,11 @@ public class SubnetMain {
 
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
-		IPAdresse ip = new IPAdresse("192.168.2.1");
-		System.out.println(ip);
+		Netzwerk netz = new Netzwerk(new IPAdresse("192.168.2.3"),"1");
+		System.out.println("IP: " + netz.getIp());
+		System.out.println("Netz: "+netz);
+		System.out.println(netz.getBC());
+		
 
 	}
 

@@ -71,7 +71,15 @@ public class IPAdresse {
 	
 	public String toString(){
 		
-		return "[IP:" + getOkt(1)+"."+ getOkt(2)+"."+ getOkt(3)+"."+getOkt(4)+"][Bin: "+ipBin+"]";
+		return "[IP:" + getOkt(1)+"."+ getOkt(2)+"."+ getOkt(3)+"."+getOkt(4)+"]";
+	}
+
+	public int getIpAdd() {
+		return ipAdd;
+	}
+
+	public void setIpAdd(int ipAdd) {
+		this.ipAdd = ipAdd;
 	}
 	
 
