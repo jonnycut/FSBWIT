@@ -42,6 +42,12 @@ public class Netzwerk {
 		this.netID=(ip.getIpAdd()&this.mask);
 	}
 	
+	public Netzwerk(IPAdresse ip, int mask){
+		this.ip=ip;
+		this.mask=mask;
+		
+	}
+	
 	public int dotToInt(int first, int second, int third, int fourth){
 		return first * 16777216 + second * 65536 + third * 256 + fourth;	//erwartet 4 integer, wandelt diese in eine Ganzzahl um
 	}
@@ -59,6 +65,9 @@ public class Netzwerk {
 		this.mask = mask;
 	}
 	
+	public int getNetID(){
+		return netID;
+	}
 	public int getOkt(int zahl,int okt){				//liefert das entsprechende Oktett der Mask zur basis 10 zurück
 		return ((zahl>>(4-okt)*8)&255);
 	}
@@ -68,9 +77,20 @@ public class Netzwerk {
 	public String getBC(){
 		return getOkt(ip.getIpAdd()|~mask,1)+"."+getOkt(ip.getIpAdd()|~mask,2)+"."+getOkt(ip.getIpAdd()|~mask,3)+"."+getOkt(ip.getIpAdd()|~mask,4);
 	}
+	public int getBCInt(){
+		return (ip.getIpAdd()|~mask);
+	}
+	public int maskToSlash(){
+		String puffer = Integer.toBinaryString(mask);
+		int x=0;
+		for(int i=0;i<puffer.length();i++){
+			if(puffer.charAt(i)=='1') x++;
+		}
+		return x;
+	}
 	
 	public String toString(){
-		return "[Net: "+ getOkt(netID,1)+"."+getOkt(netID,2)+"."+getOkt(netID,3)+"."+getOkt(netID,4)+"] [Mask: "+getOkt(mask,1)+"."+getOkt(mask,2)+"."+getOkt(mask,3)+"."+getOkt(mask,4)+"] [Hosts: "+getHosts()+"]";
+		return "[Net: "+ getOkt(netID,1)+"."+getOkt(netID,2)+"."+getOkt(netID,3)+"."+getOkt(netID,4)+"] [BC: "+ getBC()+"] [Mask: "+getOkt(mask,1)+"."+getOkt(mask,2)+"."+getOkt(mask,3)+"."+getOkt(mask,4)+"] [Hosts: "+getHosts()+"]";
 	}
 	
 	
