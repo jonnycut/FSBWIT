@@ -2,37 +2,54 @@ package Subnetting;
 
 public class IPAdresse {
 	private int ipAdd;
-	private String ipBin;	//contains binary String of ipAdd
+//	private String ipBin;	//contains binary String of ipAdd
 	
 	
 	
 	public IPAdresse(int ipAdd){				
 		this.ipAdd=ipAdd;
-		ipBin=Integer.toBinaryString(ipAdd);
-		
-		while(ipBin.length()<32){ 				//ipBin auf 32 Stellen auff�llen
-			ipBin="0"+ipBin;
-		}
+//		ipBin=Integer.toBinaryString(ipAdd);
+//		
+//		while(ipBin.length()<32){ 				//ipBin auf 32 Stellen auff�llen
+//			ipBin="0"+ipBin;
+//		}
 	}
 
 	public IPAdresse(int first, int second, int third, int fourth){
 		this.ipAdd = dotToInt(first,second,third,fourth);
-		ipBin=Integer.toBinaryString(ipAdd);
-		while(ipBin.length()<32){
-			ipBin="0"+ipBin;
-		}
 	
+	}
+	
+	public IPAdresse(int[] ipArray){
+		this.ipAdd =dotToInt(ipArray[0],ipArray[1],ipArray[2],ipArray[3]);
 	}
 	
 	public IPAdresse(String dez){
-		String[] bin = dez.split("\\.");
-		this.ipAdd = dotToInt(Integer.parseInt(bin[0]),Integer.parseInt(bin[1]),Integer.parseInt(bin[2]),Integer.parseInt(bin[3]));
-		ipBin=Integer.toBinaryString(ipAdd);
-		while(ipBin.length()<32){
-			ipBin="0"+ipBin;
+		if(dez.contains(".")){
+			String[] bin = dez.split("\\.");
+			this.ipAdd = dotToInt(Integer.parseInt(bin[0]),Integer.parseInt(bin[1]),Integer.parseInt(bin[2]),Integer.parseInt(bin[3]));
+//			ipBin=Integer.toBinaryString(ipAdd);
+//			while(ipBin.length()<32){
+//				ipBin="0"+ipBin;
+//			}
+		}else{
+			
+			String slashMask ="";
+			for(int i=0; i!=32;i++){
+				
+				if (i>=Integer.parseInt(dez)){
+					slashMask = slashMask+"0";
+				}else{
+					slashMask +=1;
+				}
+			}
+			
+			this.ipAdd = dotToInt(Integer.parseInt(slashMask.substring(0, 8), 2),Integer.parseInt(slashMask.substring(8, 16), 2),Integer.parseInt(slashMask.substring(16, 24), 2),Integer.parseInt(slashMask.substring(24), 2));
 		}
 		
 	}
+	
+	
 	
 	public int dotToInt(int first, int second, int third, int fourth){
 		return first * 16777216 + second * 65536 + third * 256 + fourth;	//erwartet 4 integer, wandelt diese in eine Ganzzahl um
@@ -61,9 +78,9 @@ public class IPAdresse {
 		return arrayB;
 	}
 	
-	public String getIpBin(){
-		return ipBin;
-	}
+//	public String getIpBin(){
+//		return ipBin;
+//	}
 	
 	public int getOkt(int okt){				//liefert das entsprechende Oktett der IP zur basis 10 zurück (ausgehend vom Bin�rstring)
 		return ((ipAdd>>(4-okt)*8)&255);

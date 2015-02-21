@@ -6,12 +6,12 @@ public class SubnetMain {
 
 		public static void main(String[] args) {
 			Scanner s = new Scanner(System.in);
-			Netzwerk netz = new Netzwerk(new IPAdresse("192.168.2.3"),"24");
+			Netzwerk netz = new Netzwerk(new IPAdresse(192,168,2,1),new IPAdresse(255,255,255,0));
 			System.out.println("IP: " + netz.getIp());
 			System.out.println("Netz: "+netz);
 			System.out.println(netz.maskToSlash());
 			
-			splitNets(4,netz);
+			splitHosts(3,netz);
 			
 	
 		}
@@ -21,17 +21,18 @@ public class SubnetMain {
 		Netzwerk netNew;
 		int oldID=net.getNetID();
 		int counter =0;
-		while(counter<hosts){
-			x++;
-			counter = (int) (Math.pow(2, x)+2);
+		
+		do{
 			
-		}
-	//	String newMask=(net.maskToSlash()+x)+"";
+			counter = (int) (Math.pow(2, x)+2);
+			x++;
+		} while(counter<hosts);
+	
 		String newMask = 32-x+"";
 		
 		
 		do{
-			netNew=new Netzwerk(new IPAdresse(oldID),newMask);
+			netNew=new Netzwerk(new IPAdresse(oldID),new IPAdresse(newMask));
 			oldID =netNew.getBCInt()+1;
 			System.out.println(netNew);
 		} while(netNew.getBCInt() != net.getBCInt());
@@ -56,7 +57,7 @@ public class SubnetMain {
 		
 		
 		for(int i=0;i<nets;i++){
-			netNew=new Netzwerk(new IPAdresse(oldID),newMask);
+			netNew=new Netzwerk(new IPAdresse(oldID),new IPAdresse(newMask));
 			oldID =netNew.getBCInt()+1;
 			System.out.println(netNew);
 		} 
