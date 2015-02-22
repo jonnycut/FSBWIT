@@ -11,7 +11,7 @@ public class SubnetMain {
 			System.out.println("Netz: "+netz);
 			System.out.println(netz.maskToSlash());
 			
-			splitHosts(15,netz);
+			splitNets(65,netz);
 			
 	
 		}
@@ -60,7 +60,9 @@ public class SubnetMain {
 	
 	public static void splitNets(int nets, Netzwerk net){
 		int x =0;
-		Netzwerk netNew;
+		int anzahl=0;
+		Netzwerk netNew=null;
+		
 		int oldID=net.getNetID();
 		int counter =0;
 		
@@ -76,11 +78,17 @@ public class SubnetMain {
 		
 		for(int i=0;i<nets;i++){
 			netNew=new Netzwerk(new IPAdresse(oldID),new IPAdresse(newMask));
+			if(netNew.getMaxHosts()<2){
+				System.out.println("Das gegebene Netz kann nicht in "+nets+" Netze unterteilt werden");
+				return;
+			}
 			
 			oldID =netNew.getBCInt()+1;
 			System.out.println(netNew);
-		} 
-				
+			anzahl++;
+		}
 		
+		System.out.println("Das Netz wurde in "+anzahl+" neue Netze mit jeweils "+netNew.getMaxHosts()+" Hosts unterteilt");
+	
 	}
 }//end class
