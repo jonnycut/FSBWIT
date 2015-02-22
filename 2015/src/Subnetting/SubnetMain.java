@@ -11,34 +11,48 @@ public class SubnetMain {
 			System.out.println("Netz: "+netz);
 			System.out.println(netz.maskToSlash());
 			
-			splitHosts(128,netz);
+			splitHosts(15,netz);
 			
 	
 		}
 		
 	public static void splitHosts(int hosts, Netzwerk net){
+		
 		int x =1;
-		if(hosts==4|hosts==3) x=2;
+		int anzahl =0;
 		Netzwerk netNew;
 		int oldID=net.getNetID();
-		int counter =0;
-		
-		while(counter<=hosts){
-			x++;
-			counter = (int) (Math.pow(2, x)+2);
-			
+		int counter =1;
+		if(hosts==0){
+			System.out.println("Das Netz kann nicht für 0 Hosts geteilt werden");
+			return;
 		}
-		x=(int) Math.sqrt(counter-2);
+
 		
+			while(counter<(hosts+2)){
+				x++;
+				counter = (int) (Math.pow(2, x));
+				
+			}
+	
 	
 		String newMask = 32-x+"";
 		
 		
 		do{
+			
 			netNew=new Netzwerk(new IPAdresse(oldID),new IPAdresse(newMask));
+			if(netNew.getMask().getIpAdd()<net.getMask().getIpAdd()){
+				System.out.println("Das Ausgangsnetz kann nicht in Netze für "+ hosts+" Hosts unterteilt werden");
+				System.out.println("Nutzen Sie das Netz:");
+				System.out.println(net);
+				return;
+			}
 			oldID =netNew.getBCInt()+1;
 			System.out.println(netNew);
+			anzahl++;
 		} while(netNew.getBCInt() != net.getBCInt());
+		System.out.println("Das Netz wurde in "+anzahl+" neue Netze mit jeweils " +netNew.getMaxHosts()+" Hosts unterteilt.");
 				
 		
 	}
@@ -59,8 +73,10 @@ public class SubnetMain {
 		String newMask = net.maskToSlash()+x+"";
 		
 		
+		
 		for(int i=0;i<nets;i++){
 			netNew=new Netzwerk(new IPAdresse(oldID),new IPAdresse(newMask));
+			
 			oldID =netNew.getBCInt()+1;
 			System.out.println(netNew);
 		} 

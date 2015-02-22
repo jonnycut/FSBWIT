@@ -81,7 +81,7 @@ public class Netzwerk {
 	public int getOkt(int zahl,int okt){				//liefert das entsprechende Oktett der Mask zur basis 10 zurück
 		return ((zahl>>(4-okt)*8)&255);
 	}
-	public int getHosts(){
+	public int getMaxHosts(){
 		return ~mask.getIpAdd()-1;
 	}
 	public String getBC(){
@@ -100,7 +100,7 @@ public class Netzwerk {
 	}
 	
 	public String toString(){
-		return "[Net: "+ getOkt(netID,1)+"."+getOkt(netID,2)+"."+getOkt(netID,3)+"."+getOkt(netID,4)+"] [BC: "+ getBC()+"] [Mask: "+getOkt(mask.getIpAdd(),1)+"."+getOkt(mask.getIpAdd(),2)+"."+getOkt(mask.getIpAdd(),3)+"."+getOkt(mask.getIpAdd(),4)+"] [Hosts: "+getHosts()+"]";
+		return "[Net: "+ getOkt(netID,1)+"."+getOkt(netID,2)+"."+getOkt(netID,3)+"."+getOkt(netID,4)+"] [BC: "+ getBC()+"] [Mask: "+getOkt(mask.getIpAdd(),1)+"."+getOkt(mask.getIpAdd(),2)+"."+getOkt(mask.getIpAdd(),3)+"."+getOkt(mask.getIpAdd(),4)+"] [Hosts: "+getMaxHosts()+"]";
 	}
 	
 	
