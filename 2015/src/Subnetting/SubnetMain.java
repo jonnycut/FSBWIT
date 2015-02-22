@@ -11,22 +11,25 @@ public class SubnetMain {
 			System.out.println("Netz: "+netz);
 			System.out.println(netz.maskToSlash());
 			
-			splitHosts(3,netz);
+			splitHosts(128,netz);
 			
 	
 		}
 		
 	public static void splitHosts(int hosts, Netzwerk net){
 		int x =1;
+		if(hosts==4|hosts==3) x=2;
 		Netzwerk netNew;
 		int oldID=net.getNetID();
 		int counter =0;
 		
-		do{
-			
-			counter = (int) (Math.pow(2, x)+2);
+		while(counter<=hosts){
 			x++;
-		} while(counter<hosts);
+			counter = (int) (Math.pow(2, x)+2);
+			
+		}
+		x=(int) Math.sqrt(counter-2);
+		
 	
 		String newMask = 32-x+"";
 		
