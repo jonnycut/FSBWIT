@@ -13,8 +13,8 @@ public class RoutingMain {
 		router.routePrint();
 		System.out.println();
 		System.out.println("Route:");
-		System.out.println(router.logestPrefMatch(new IPAdresse("192.168.0.50")));
-		System.out.println(net.ipMatch(new IPAdresse("192.168.0.50")));
+		System.out.println(router.logestPrefMatch(new IPAdresse("192.168.0.128")));
+		System.out.println(net.ipMatch(new IPAdresse("192.168.0.200")));
 		
 	}
 
