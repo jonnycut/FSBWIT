@@ -12,7 +12,10 @@ public class Router {
 		Route longestPref=table.get(0);
 		
 		for(int i=0; i<table.size();i++){
-			if(i+1>table.size()-1 && table.get(i).getNet().ipMatch(destIP)) return longestPref;
+			if(i+1>table.size()-1 && table.get(i).getNet().ipMatch(destIP)&&table.get(i).getNet().getMaskLength()>longestPref.getNet().getMaskLength()){
+				return table.get(i);
+			}
+				
 			if(table.get(i).getNet().ipMatch(destIP) && table.get(i).getNet().getMaskLength()>longestPref.getNet().getMaskLength())
 				longestPref=table.get(i);
 			
