@@ -11,7 +11,7 @@ public class Router {
 		Route longestPref = table.get(0);
 		for(int i=0;i<table.size();i++){
 			Route current=table.get(i);
-			if(longestPref.getNet().getMaskLength()<current.getNet().getMaskLength()){
+			if(longestPref.getNet().ipMatch(destIP)<current.getNet().ipMatch(destIP)){
 				longestPref=current;
 			}
 		}
