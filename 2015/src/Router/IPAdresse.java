@@ -25,10 +25,9 @@ public class IPAdresse {
 			this.ipAdd = dotToInt(Integer.parseInt(bin[0]),Integer.parseInt(bin[1]),Integer.parseInt(bin[2]),Integer.parseInt(bin[3]));
 
 		}else{
-			int slashmask = -1;							//CIDR Schreibweise verarbeiten, wenn IP eine Maske ist
-			int register = 32 -Integer.parseInt(dez);
-			slashmask = slashmask << register;
-			this.ipAdd = slashmask;
+			//CIDR Schreibweise verarbeiten, wenn IP eine Maske ist
+			
+			this.ipAdd = -1 <<(32 -Integer.parseInt(dez));
 			
 //			String slashMask ="";
 //			for(int i=0; i!=32;i++){

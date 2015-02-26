@@ -28,8 +28,11 @@ public class Netzwerk {
 		
 	}
 	
-	public boolean ipMatch(IPAdresse fIP){
-		return ((fIP.getIpAdd()&this.mask.getIpAdd())==this.netID);
+	public int ipMatch(IPAdresse fIP){
+		if ((fIP.getIpAdd()&this.mask.getIpAdd())==this.netID)
+			return getMaskLength();
+		else
+			return -1;
 	}
 	
 //-------------------------------------------m�glichkeit, die Maske nicht als IPAdresse() zu behandeln------------------------------------------------------
@@ -94,14 +97,17 @@ public class Netzwerk {
 	public int getBCInt(){
 		return (ip.getIpAdd()|~mask.getIpAdd());
 	}
-	public int maskToSlash(){
-		String puffer = Integer.toBinaryString(mask.getIpAdd());
-		int x=0;
-		for(int i=0;i<puffer.length();i++){
-			if(puffer.charAt(i)=='1') x++;
-		}
-		return x;
-	}
+	
+//	public int maskToSlash(){
+//		
+//		
+//		String puffer = Integer.toBinaryString(mask.getIpAdd());
+//		int x=0;
+//		for(int i=0;i<puffer.length();i++){
+//			if(puffer.charAt(i)=='1') x++;
+//		}
+//		return x;
+//	}
 	
 	public int getMaskLength(){
 		return 32-Integer.numberOfTrailingZeros(mask.getIpAdd());
