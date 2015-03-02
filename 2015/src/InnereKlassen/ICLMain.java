@@ -1,5 +1,8 @@
 package InnereKlassen;
 
+import java.util.Iterator;
+
+
 public class ICLMain {
 
 	public static void main(String[] args) {
@@ -10,19 +13,13 @@ public class ICLMain {
 		for(String act:help)
 			liste.add(act);
 		
-	Iterator aussen = liste.new Aufzaehler();
-	
-	
-	
-	while(aussen.hasNext()){
-		String aktuell = aussen.next();
-		Iterator innen = liste.new Aufzaehler();
-		while(innen.hasNext()){
-			if(aktuell.equalsIgnoreCase(innen.next())) 
-				zaehler++;
+		for(Object act:help){
+			for(Object next:help){
+				if(act.equals(next))
+					zaehler++;
+			}
 		}
 		
-	}
 	System.out.println(zaehler-liste.getSize());
 	
 		

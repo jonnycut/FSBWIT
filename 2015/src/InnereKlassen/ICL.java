@@ -1,6 +1,9 @@
 package InnereKlassen;
 
-public class ICL {
+import java.util.Iterator;
+
+
+public class ICL implements Iterable {
 	
 	private Element first;
 	
@@ -53,7 +56,14 @@ public class ICL {
 		return counter;
 	}
 	
-
+	public Iterator iterator(){
+		
+		return new Aufzaehler();
+		
+	}
+	
+	
+	
 
 
 	
@@ -66,19 +76,26 @@ public class ICL {
 			
 		}
 		
-	}//end innerclass
+	}//end inner class element
 	
-	public class Aufzaehler implements Iterator{
+	private class Aufzaehler implements Iterator{
 		private Element current = first;
 		
 		public boolean hasNext(){
 			return current !=null;
 		}
-		public String next(){
+		public Object next(){
 			String ret =current.value;
 			current = current.next;
 			return ret;
 		}
-	}
+		
+	
+		@Override
+		public void remove() {
+			// TODO Auto-generated method stub
+			
+		}
+	} //end inner class Aufzaehler
 	
 }
