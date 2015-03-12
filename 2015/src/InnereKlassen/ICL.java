@@ -3,7 +3,7 @@ package InnereKlassen;
 import java.util.Iterator;
 
 
-public class ICL implements Iterable {
+public class ICL<T> implements Iterable<T> {
 	
 	private Element first;
 	
@@ -25,7 +25,7 @@ public class ICL implements Iterable {
 
 	
 
-	public void add(String value){
+	public void add(T value){
 		
 		if(first==null){
 			first=new Element(value);
@@ -56,7 +56,7 @@ public class ICL implements Iterable {
 		return counter;
 	}
 	
-	public Iterator iterator(){
+	public Iterator<T> iterator(){
 		
 		return new Aufzaehler();
 		
@@ -67,12 +67,13 @@ public class ICL implements Iterable {
 
 
 	
-	private static class Element{
+	private class Element{
 		private Element next;
-		private String value;
+		private T value;
 
-		public Element(String value){
+		public Element(T value){
 			this.value=value;
+			this.next=null;
 			
 		}
 		
@@ -84,8 +85,8 @@ public class ICL implements Iterable {
 		public boolean hasNext(){
 			return current !=null;
 		}
-		public Object next(){
-			String ret =current.value;
+		public T next(){
+			T ret =current.value;
 			current = current.next;
 			return ret;
 		}

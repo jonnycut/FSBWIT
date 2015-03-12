@@ -6,7 +6,7 @@ import java.util.Iterator;
 public class ICLMain {
 
 	public static void main(String[] args) {
-		ICL liste = new ICL();
+		ICL<String> liste = new ICL<>();
 		String[] help = {"A","B","C","A","B","G","C","H","Z","A"};
 		int zaehler=0;
 		
