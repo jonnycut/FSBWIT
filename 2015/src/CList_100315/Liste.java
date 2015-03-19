@@ -1,8 +1,10 @@
 package CList_100315;
 
 import java.util.Iterator;
+import java.util.Comparator;
 
-public class Liste<T extends Comparable<T>> implements Iterable<T> {
+
+public class Liste<T> implements Iterable<T> {
 	private Element<T> first;
 	private int size;
 	
@@ -24,9 +26,9 @@ public class Liste<T extends Comparable<T>> implements Iterable<T> {
 	
 	public String toString(){
 		String rueck="";
-		Element act = first;
-		for(int i=0; i<getSize();i++){
-			rueck += act.value+";";
+		Element<T> act = first;
+		for(int i=0; i<this.getSize();i++){
+			rueck += act.value+"\n";
 			act =act.next;
 		}
 		return rueck;
@@ -62,6 +64,7 @@ public class Liste<T extends Comparable<T>> implements Iterable<T> {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void sort(){
 		Liste<T> sorted = new Liste<>();
 	
@@ -77,12 +80,43 @@ public class Liste<T extends Comparable<T>> implements Iterable<T> {
 			}
 			
 			while(help != null){
-				if(small.value.compareTo(help.value)<0){
+				if(((Comparable<T>)small.value).compareTo(help.value)<0){ //Class-cast von "Value" in vergleichbar, obwohl nicht immer möglich
 					small = help;
 				}
 				help=help.next;
 				
 			}
+			sorted.add(small.value);
+			this.remove(small);
+		}
+		this.first = sorted.first;
+		this.size = sorted.size;
+		
+		
+	}
+	
+	public void sort2(Comparator <T> vergleicher){
+		Liste<T> sorted = new Liste<>();
+	
+		
+		while(!this.isEmpty()){
+			Element<T> help = this.first.next;
+			Element<T> small = first;
+			if(help==null){
+				sorted.add(small.value);
+				this.remove(small);
+				
+				break;
+			}
+	
+				while(help != null){
+					if(vergleicher.compare(help.value, small.value)>0){
+						small = help;
+					}
+					help=help.next;
+					
+				}
+			
 			sorted.add(small.value);
 			this.remove(small);
 		}
@@ -110,6 +144,8 @@ public class Liste<T extends Comparable<T>> implements Iterable<T> {
 		}
 	}
 	
+
+	
 	
 	public Iterator<T> iterator() { //-> sorgt dafür, dass "for:each" funktioniert
 	
@@ -134,8 +170,8 @@ public class Liste<T extends Comparable<T>> implements Iterable<T> {
 		}
 
 		
-		//nicht nötig
-		public void remove() {}
+		
+		public void remove() {}//nicht nötig
 		
 	}
 	
@@ -148,6 +184,7 @@ public class Liste<T extends Comparable<T>> implements Iterable<T> {
 			this.value=value;
 			this.next=null;
 		}
+		
 		
 		
 		

@@ -1,4 +1,5 @@
 package CList_100315;
+import java.util.Comparator;
 
 public class Auto implements Comparable <Auto> {
 	private String kennzeichen;
@@ -8,6 +9,14 @@ public class Auto implements Comparable <Auto> {
 		this.kennzeichen = kennZ;
 		this.hubraum = hubR;
 	}
+	
+	public static final Comparator<Auto>
+		HUBRAUM_ORDER = new Comparator<Auto>(){
+			public int compare(Auto a1, Auto a2){
+				return a1.hubraum-a2.hubraum;
+			}
+		}; //wird aufgerufen mit "Auto.HUBRAUM_ORDER"
+	
 
 	public String getKennzeichen() {
 		return kennzeichen;
@@ -29,6 +38,11 @@ public class Auto implements Comparable <Auto> {
 		
 		return this.kennzeichen.compareToIgnoreCase(auto2.kennzeichen);
 		
+	}
+	
+	public String toString(){
+		
+		return this.kennzeichen+"\t\t"+this.hubraum;
 	}
 	
 	
