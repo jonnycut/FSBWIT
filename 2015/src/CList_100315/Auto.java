@@ -42,7 +42,7 @@ public class Auto implements Comparable <Auto> {
 	
 	public String toString(){
 		
-		return this.kennzeichen+"\t\t"+this.hubraum;
+		return this.kennzeichen+"\t"+this.hubraum;
 	}
 	
 	

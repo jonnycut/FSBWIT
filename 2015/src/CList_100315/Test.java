@@ -57,7 +57,9 @@ public class Test {
 		
 		//(Comparator)Collator.getInstance(Locale.GERMAN) --> Sortierung inkl. Umlaute
 		
-		System.out.println(l);
+		for(String k:l){
+			System.out.println(k);
+		}
 		
 		
 		
