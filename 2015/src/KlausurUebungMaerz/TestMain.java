@@ -47,6 +47,8 @@ public class TestMain {
 		
 		for(Auto a:liste)
 			System.out.println(a);
+			
+		
 		
 		 
 		

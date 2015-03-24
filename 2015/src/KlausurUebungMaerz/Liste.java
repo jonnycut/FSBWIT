@@ -6,6 +6,7 @@ import java.util.Iterator;
 public class Liste<T> implements Iterable<T> {
 	private Element first;
 	
+
 	
 	public void add(T value){
 		if(first==null){
@@ -53,6 +54,29 @@ public class Liste<T> implements Iterable<T> {
 		
 		return ret;
 			
+	}
+	
+	public T remove(Element ele){
+		Element act = first;
+		T tmp;
+		if(first==ele){
+			tmp = first.value;
+			first=first.next;
+			return tmp;
+			
+		}else{
+			while(act.next!=null){
+				if(act.next==ele){
+					tmp = act.next.value;
+					act.next = act.next.next;
+					return tmp;
+				}
+				ele = ele.next;
+			}
+		}
+		
+		return null;
+	
 	}
 	
 	
