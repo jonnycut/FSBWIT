@@ -1,5 +1,7 @@
 package KlausurUebungMaerz;
 
+import java.util.Comparator;
+
 public class TestMain {
 
 	public static void main(String[] args) {
@@ -45,11 +47,23 @@ public class TestMain {
 		for(int i=0;i<15;i++)
 			liste.add(new Auto((int)(Math.random()*1000), baueKennZ(),baueFarbe()));
 		
-		for(Auto a:liste)
-			System.out.println(a);
-			
+		System.out.println(liste);
+		
+		liste.sort(Auto.HUBRAUM_ORDER);
+		System.out.println(liste);
+		
+		liste.sort(Auto.FARB_ORDER);
+		System.out.println(liste);
 		
 		
+		
+		
+		liste.sort( new Comparator<Auto>(){
+			public int compare(Auto a1, Auto a2){
+				return a2.getKennZ().compareToIgnoreCase(a1.getKennZ());
+			}
+		});
+		System.out.println(liste);
 		 
 		
 		

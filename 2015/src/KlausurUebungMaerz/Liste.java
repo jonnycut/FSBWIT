@@ -1,5 +1,6 @@
 package KlausurUebungMaerz;
 
+import java.util.Comparator;
 import java.util.Iterator;
 
 
@@ -45,10 +46,10 @@ public class Liste<T> implements Iterable<T> {
 	
 	public String toString(){
 		Element ele = this.first;
-		String ret = "";
+		String ret = "HR\tKennZ\t\tFarbe\n--\t-----\t\t-----\n";
 		
 		while(ele !=null){
-			ret = ret + ele.value+"|";
+			ret = ret + ele.value+"\n";
 			ele=ele.next;
 		}
 		
@@ -71,12 +72,33 @@ public class Liste<T> implements Iterable<T> {
 					act.next = act.next.next;
 					return tmp;
 				}
-				ele = ele.next;
+				act = act.next;
 			}
 		}
 		
 		return null;
 	
+	}
+	
+	public void sort(Comparator<T> vergl){
+		Liste<T> sorted = new Liste<>();
+		
+		
+		while(!this.isEmpty()){
+			Element small = this.first;
+			Element act = this.first;
+			
+			while(act!=null){
+				if(vergl.compare(act.value, small.value)<0){
+					small =act;
+				}
+				act=act.next;
+			}//end while
+			sorted.add(small.value);
+			this.remove(small);
+		}
+		
+		this.first = sorted.first;
 	}
 	
 	

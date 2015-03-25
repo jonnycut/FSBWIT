@@ -45,7 +45,7 @@ public class Auto implements Comparable<Auto> {
 	public static final Comparator<Auto>
 		FARB_ORDER=new Comparator<Auto>(){
 			public int compare(Auto a1, Auto a2){
-				return a1.farbe.compareToIgnoreCase(a2.farbe);
+				return a2.farbe.compareToIgnoreCase(a1.farbe);
 			}
 		};
 		
