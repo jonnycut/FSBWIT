@@ -42,52 +42,117 @@ public class TestMain {
 */	
 		
 
-		Liste<Auto> liste = new Liste<>();
+//		Liste<Auto> liste = new Liste<>();
+//		
+//		for(int i=0;i<15;i++)
+//			liste.add(new Auto((int)(Math.random()*1000), baueKennZ(),baueFarbe()));
+//		
+//		System.out.println(liste);
+//		
+//		liste.sort(Auto.HUBRAUM_ORDER);
+//		System.out.println(liste);
+//		
+//		liste.sort(Auto.FARB_ORDER);
+//		System.out.println(liste);
+//		
+//		
+//		
+//		
+//		liste.sort( new Comparator<Auto>(){
+//			public int compare(Auto a1, Auto a2){
+//				return a2.getKennZ().compareToIgnoreCase(a1.getKennZ());
+//			}
+//		});
+//		System.out.println(liste);
+//		 
+//		
+//		
+//			
+//			
+//		}
+//	public static String baueKennZ(){
+//		
+//		String ret = "";
+//		ret += (char) ((Math.random()*26)+'A');
+//		ret += (char) ((Math.random()*26)+'A');
+//		ret += "-";
+//		ret += (char) ((Math.random()*26)+'A');
+//		ret += (char) ((Math.random()*26)+'A');
+//		ret += " ";
+//		ret += (int) (Math.random()*1000);
+//		
+//		return ret;
+//	}
+//	
+//	public static String baueFarbe(){
+//		String[] farbgedoens ={"Gelb","Blau","Grün","Beige","Grau","IbisWeiß","KackBraun","UrinGelb","SaftWeiß","Rot"};
+//		
+//		return farbgedoens[(int) (Math.random()*10)];
+	
 		
-		for(int i=0;i<15;i++)
-			liste.add(new Auto((int)(Math.random()*1000), baueKennZ(),baueFarbe()));
+		Liste<Sabine> liste = new Liste<>();
 		
-		System.out.println(liste);
+		for(int i=0;i<10;i++)
+			liste.add(new Sabine());
 		
-		liste.sort(Auto.HUBRAUM_ORDER);
-		System.out.println(liste);
+		for(Sabine sabse:liste)
+			System.out.println(sabse);
 		
-		liste.sort(Auto.FARB_ORDER);
-		System.out.println(liste);
+		liste.sort();
+		System.out.println();
+		System.out.println();
 		
+		for(Sabine sabse:liste)
+			System.out.println(sabse);
 		
-		
-		
-		liste.sort( new Comparator<Auto>(){
-			public int compare(Auto a1, Auto a2){
-				return a2.getKennZ().compareToIgnoreCase(a1.getKennZ());
+		liste.sort(new Comparator<Sabine>(){
+			public int compare(Sabine s1, Sabine s2){
+				
+				return s1.getGroesse()-s2.getGroesse();
+				
 			}
 		});
-		System.out.println(liste);
-		 
+		
+		System.out.println();
+		System.out.println();
+		
+		for(Sabine sabse:liste)
+			System.out.println(sabse);
+		
+		System.out.println();
+		System.out.println();
 		
 		
-			
-			
-		}
-	public static String baueKennZ(){
+		liste.sort(Sabine.OBERWEITE_ORDER);
 		
-		String ret = "";
-		ret += (char) ((Math.random()*26)+'A');
-		ret += (char) ((Math.random()*26)+'A');
-		ret += "-";
-		ret += (char) ((Math.random()*26)+'A');
-		ret += (char) ((Math.random()*26)+'A');
-		ret += " ";
-		ret += (int) (Math.random()*1000);
+		for(Sabine sabse:liste)
+			System.out.println(sabse);
 		
-		return ret;
-	}
-	
-	public static String baueFarbe(){
-		String[] farbgedoens ={"Gelb","Blau","Grün","Beige","Grau","IbisWeiß","KackBraun","UrinGelb","SaftWeiß","Rot"};
 		
-		return farbgedoens[(int) (Math.random()*10)];
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 	}
 }

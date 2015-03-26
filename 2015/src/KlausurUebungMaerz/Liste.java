@@ -101,6 +101,28 @@ public class Liste<T> implements Iterable<T> {
 		this.first = sorted.first;
 	}
 	
+	@SuppressWarnings("unchecked")
+	public void sort(){
+		Liste<T> sorted = new Liste<>();
+		
+		
+		while(!this.isEmpty()){
+			Element small = this.first;
+			Element act = this.first;
+			
+			while(act!=null){
+				if(((Comparable<T>) act.value).compareTo(small.value)<0){
+					small =act;
+				}
+				act=act.next;
+			}//end while
+			sorted.add(small.value);
+			this.remove(small);
+		}
+		
+		this.first = sorted.first;
+	}
+	
 	
 	
 	public Iterator<T> iterator(){
