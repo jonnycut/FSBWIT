@@ -2,7 +2,7 @@ package OsterUebung;
 import java.util.Comparator;
 
 
-public class Osterhase implements Comparator<T> {
+public class Osterhase implements Comparable<Osterhase> {
 	private Korb korb = new Korb();
 	private int groesse;
 	
@@ -24,9 +24,25 @@ public class Osterhase implements Comparator<T> {
 		KORB_ORDER= new Comparator<Osterhase>(){
 			public int compare(Osterhase o1, Osterhase o2) {
 				
-				return 0;
+				return o1.korb.gewicht() - o2.korb.gewicht();
 			}
 	};
+
+
+
+
+
+
+	public int compareTo(Osterhase o) {
+		
+		return this.groesse-o.groesse;
+	}
+	
+	public String toString(){
+		
+		return "Groesse: " +this.groesse +"\nKorb:\tGesamtgewicht:\t"+ this.korb.gewicht()+"\n"+ this.korb;
+		
+	}
 			
 	
 }

@@ -19,10 +19,19 @@ public class Korb {
 	public int gewicht(){
 		int gewicht=0;
 		
-		for(Ei x:korb)
-			gewicht+=x.getGewicht();
+		for(Ei ei:korb)
+			gewicht+=ei.getGewicht();
 		
 		return gewicht;
+	}
+	
+	public String toString(){
+		String ret = "";
+		
+		for(Ei ei:korb)
+			ret += ei.toString()+"|\n";
+		
+		return ret; 
 	}
 	
 	
