@@ -1,6 +1,8 @@
 package Puffer;
 
-public class Puffer<T> {
+import java.util.Iterator;
+
+public class Puffer<T> implements Iterable<T> {
 	
 	private Element lesen;
 	private Element schreiben;
@@ -44,6 +46,34 @@ public class Puffer<T> {
 		private T value;
 		private Element next;
 		
+	}
+
+	public Iterator<T> iterator(){
+		
+		return new Iterator<T>(){
+			private Element act =lesen;
+			private Element last = schreiben;
+			@Override
+			public boolean hasNext() {
+				
+				return act.next != last;
+				
+			}
+
+			@Override
+			public T next() {
+				T value = act.value;
+				act = act.next;
+				return value;
+			}
+
+			@Override
+			public void remove() {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		};
 	}
 
 }

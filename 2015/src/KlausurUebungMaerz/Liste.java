@@ -37,7 +37,7 @@ public class Liste<T> implements Iterable<T> {
 		
 		Element tmp=first;
 		first = first.next;
-		return first.value;
+		return tmp.value;
 	}
 	
 	public boolean isEmpty(){
@@ -120,6 +120,13 @@ public class Liste<T> implements Iterable<T> {
 			T ret = next.value;
 			next = next.next;
 			return ret;
+		}
+
+
+		@Override
+		public void remove() {
+			// TODO Auto-generated method stub
+			
 		}
 		
 	}

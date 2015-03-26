@@ -1,4 +1,4 @@
-package CList_100315;
+package OsterUebung;
 
 import java.util.Iterator;
 import java.util.Comparator;
@@ -29,6 +29,8 @@ public class Liste<T> implements Iterable<T> {
 		first = first.next;
 		return tmp;
 	}
+	
+	
 	public String toString(){
 		String rueck="";
 		Element<T> act = first;
