@@ -8,7 +8,7 @@ public class HashMain {
 		table.add("nicht so tief Ruediger");
 		table.add("wolfgang pass auf");
 		table.add("welt");
-		table.add("test");
+		table.add("das war kein Meter");
 		table.add("uhrzeit");
 		table.add("keine Kapriolen");
 		table.add("grade bei diesen Ballen dort");
