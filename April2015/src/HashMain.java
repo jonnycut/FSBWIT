@@ -14,7 +14,7 @@ public class HashMain {
 		table.add("grade bei diesen Ballen dort");
 		table.add("Letzter Wert");
 		table.add("der nicht");
-		
+		//test
 		
 		System.out.println(table.contains("der nicht"));
 
