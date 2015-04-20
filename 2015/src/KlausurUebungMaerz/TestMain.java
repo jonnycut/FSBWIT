@@ -1,5 +1,7 @@
 package KlausurUebungMaerz;
 
+import java.util.Comparator;
+
 public class TestMain {
 
 	public static void main(String[] args) {
@@ -40,40 +42,117 @@ public class TestMain {
 */	
 		
 
-		Liste<Auto> liste = new Liste<>();
-		
-		for(int i=0;i<15;i++)
-			liste.add(new Auto((int)(Math.random()*1000), baueKennZ(),baueFarbe()));
-		
-		for(Auto a:liste)
-			System.out.println(a);
-			
-		
-		
-		 
-		
-		
-			
-			
-		}
-	public static String baueKennZ(){
-		
-		String ret = "";
-		ret += (char) ((Math.random()*26)+'A');
-		ret += (char) ((Math.random()*26)+'A');
-		ret += "-";
-		ret += (char) ((Math.random()*26)+'A');
-		ret += (char) ((Math.random()*26)+'A');
-		ret += " ";
-		ret += (int) (Math.random()*1000);
-		
-		return ret;
-	}
+//		Liste<Auto> liste = new Liste<>();
+//		
+//		for(int i=0;i<15;i++)
+//			liste.add(new Auto((int)(Math.random()*1000), baueKennZ(),baueFarbe()));
+//		
+//		System.out.println(liste);
+//		
+//		liste.sort(Auto.HUBRAUM_ORDER);
+//		System.out.println(liste);
+//		
+//		liste.sort(Auto.FARB_ORDER);
+//		System.out.println(liste);
+//		
+//		
+//		
+//		
+//		liste.sort( new Comparator<Auto>(){
+//			public int compare(Auto a1, Auto a2){
+//				return a2.getKennZ().compareToIgnoreCase(a1.getKennZ());
+//			}
+//		});
+//		System.out.println(liste);
+//		 
+//		
+//		
+//			
+//			
+//		}
+//	public static String baueKennZ(){
+//		
+//		String ret = "";
+//		ret += (char) ((Math.random()*26)+'A');
+//		ret += (char) ((Math.random()*26)+'A');
+//		ret += "-";
+//		ret += (char) ((Math.random()*26)+'A');
+//		ret += (char) ((Math.random()*26)+'A');
+//		ret += " ";
+//		ret += (int) (Math.random()*1000);
+//		
+//		return ret;
+//	}
+//	
+//	public static String baueFarbe(){
+//		String[] farbgedoens ={"Gelb","Blau","Grün","Beige","Grau","IbisWeiß","KackBraun","UrinGelb","SaftWeiß","Rot"};
+//		
+//		return farbgedoens[(int) (Math.random()*10)];
 	
-	public static String baueFarbe(){
-		String[] farbgedoens ={"Gelb","Blau","Grün","Beige","Grau","IbisWeiß","KackBraun","UrinGelb","SaftWeiß","Rot"};
 		
-		return farbgedoens[(int) (Math.random()*10)];
+		Liste<Sabine> liste = new Liste<>();
+		
+		for(int i=0;i<10;i++)
+			liste.add(new Sabine());
+		
+		for(Sabine sabse:liste)
+			System.out.println(sabse);
+		
+		liste.sort();
+		System.out.println();
+		System.out.println();
+		
+		for(Sabine sabse:liste)
+			System.out.println(sabse);
+		
+		liste.sort(new Comparator<Sabine>(){
+			public int compare(Sabine s1, Sabine s2){
+				
+				return s1.getGroesse()-s2.getGroesse();
+				
+			}
+		});
+		
+		System.out.println();
+		System.out.println();
+		
+		for(Sabine sabse:liste)
+			System.out.println(sabse);
+		
+		System.out.println();
+		System.out.println();
+		
+		
+		liste.sort(Sabine.OBERWEITE_ORDER);
+		
+		for(Sabine sabse:liste)
+			System.out.println(sabse);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 	}
 }
