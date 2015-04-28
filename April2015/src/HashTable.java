@@ -87,7 +87,7 @@ public class HashTable<T> {
 	
 	@SuppressWarnings("unchecked")
 	public void remove(T value){
-		int index = (value.hashCode()&0x7fffffff);
+		int index = (value.hashCode()&0x7fffffff)%eimer.length;
 		int foundIndex = -1;
 		int pos = index;
 		int lastPos=-1;
@@ -105,7 +105,7 @@ public class HashTable<T> {
 			}
 		
 		while(eimer[pos]!=null){
-			if(eimer[pos].hashCode()== value.hashCode()){
+			if((eimer[pos].hashCode()&0x7fffffff)%eimer.length== (value.hashCode()&0x7fffffff)%eimer.length){
 				tmp = eimer[pos];
 				lastPos=pos;
 			}
@@ -121,6 +121,15 @@ public class HashTable<T> {
 		}
 		
 	}
+	
+	public String toString(){
+		String ret="";
+		for(Object o:this.eimer){
+			ret +=";"+o;
+		}
+		return ret;
+	}
+	
 	
 	
 	
