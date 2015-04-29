@@ -11,7 +11,7 @@ public class HashMain {
 		table.add("Abc");
 		
 		System.out.println(table);
-		table.remove("Hallo");
+
 		System.out.println(table);
 	
 		

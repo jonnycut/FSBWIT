@@ -32,19 +32,21 @@ public class HashTable<T> implements Iterable<T> {
 				if(pos==index) table[-1]="voll";
 			}
 			table[pos]=value;
+			voll+= (1.0/(table.length)*100);
 		}
 		//bei 70% füllstand erweitern
 		
 		if(voll>=70.0){
-			Object[] puffer = new Object[table.length*2];
-			int posNew=0;
+			HashTable<T> puffer = new HashTable<>(table.length*2);
 			
-			for(Object k:table){
-				puffer[posNew]=k;
-				posNew++;
+			for(int i=0;i<table.length;i++){
+				if(table[i]!=null)
+					puffer.add((T) table[i]);
 			}
 			
-			this.table=puffer;
+			
+			this.table=puffer.table;
+			
 			
 		}
 		
@@ -68,6 +70,52 @@ public class HashTable<T> implements Iterable<T> {
 		return false;
 		
 		
+	}
+	
+	public void remove(T value){
+		int index = ((value.hashCode()&0x7fffffff)%table.length);
+		int pos=index;
+		int lastPos = -1;
+		
+		while(table[pos]!=null){
+			if(table[pos].equals(value)){
+				table[pos] = null;
+				break;
+			}
+			
+			pos++;
+			if(pos==table.length)pos=0;
+			if(pos==index) return;
+		}
+		
+		T tmp=null;
+		pos++;
+		
+		while(table[pos]!=null){
+			if(((table[pos].hashCode()&0x7fffffff)%table.length) == (value.hashCode()&0x7fffffff)%table.length){
+				tmp = (T) table[pos];
+				lastPos=pos;
+			}
+			pos++;
+			
+			if(pos==table.length) pos=0;
+			if(pos==index) break;
+		}
+		
+		if(lastPos!=-1){
+			table[index]=tmp;
+			table[lastPos]= null;
+		}
+	}//end remove
+	
+	public String toString(){
+		String ret="";
+		for(Object k : table){
+			ret+=" | " + k;
+		}
+		
+		return ret;
+			
 	}
 
 	@Override
