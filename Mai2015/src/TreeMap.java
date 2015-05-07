@@ -64,18 +64,6 @@ public class TreeMap <K extends Comparable<K>, V extends Comparable<V>>{
 		
 	}
 	
-	@SuppressWarnings("unchecked")
-	public K getReverse(V value){
-		if(isEmpty())
-			return null;
-		else if(value.compareTo(root.value)<0){
-			return getLeft().getReverse(value);
-		}else if (value.compareTo(root.value)>0)
-			return getRight().getReverse(value);
-		else
-			return root.key;
-		
-	}
 	
 	
 	private class Node{
