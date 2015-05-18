@@ -55,6 +55,54 @@ public class SportSoftware {
 		
 	}
 	
+	public List<String> getDisziplin(){
+		
+		return new ArrayList<>(
+		leistungen.keySet());  //liefert alle Schluessel ohne die verknuepften Daten zurück!
+		
+	}
+	
+	public String erstelleUrkunde(Simpson s){
+		
+		String ret = s.getName()+"";
+		
+		for(String d : leistungen.keySet()){
+			Map<Simpson, Integer> werte = leistungen.get(d);
+			Integer i = werte.get(s);
+			if(i!=null)
+				ret += "\n "+d+""+i;
+		}
+		
+		return ret;
+	}
+	
+	public String erstelleTop3Fuer(String disziplin){
+		
+		Map<Simpson, Integer> werte = leistungen.get(disziplin);
+		Comparator<Integer> comp = new Vergleicher(disziplin);
+		
+		TreeSet<Integer> besteValues = new TreeSet<>(comp);
+		besteValues.addAll(werte.values());
+		
+		int platz = 1;
+		String ret = disziplin +"\n";
+		
+		for(Integer i:besteValues){
+			for(Simpson s: werte.keySet()){
+				if(werte.get(s).equals(i))
+					ret+="\n"+platz+"."+s.getName()+"("+i+")";
+			}
+				
+		}
+		
+		return ret;
+		
+		
+		
+		
+		
+	}
+	
 	private class Vergleicher implements Comparator<Integer>{
 
 		private boolean kleinerIstBesser;

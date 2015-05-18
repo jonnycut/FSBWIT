@@ -9,6 +9,10 @@ public class Simpson implements Comparable<Simpson> {
 		this.name = name;
 		
 	}
+	
+	public String getName(){
+		return this.name;
+	}
 
 	@Override
 	public int compareTo(Simpson s1) {
