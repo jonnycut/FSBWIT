@@ -7,6 +7,7 @@ public class Spielen {
 	public static void main(String[] args) {
 		Becher spieler1 = new Becher("Kai");
 		Becher spieler2 = new Becher("Dennis");
+		String ausgabe="";
 		Map<Becher, Integer> spielstand = new HashMap<>();
 		spielstand.put(spieler1, 0);
 		spielstand.put(spieler2, 0);
@@ -24,11 +25,11 @@ public class Spielen {
 				
 					
 				if(eingabe!= null)
-					active.wuerfeln(eingabe);
+					ausgabe=active.wuerfeln(eingabe);
 				if(eingabe.equals("x"))
 					break;
 				if(i==1){
-					System.out.println("3. Wurf = Dunkel");
+					System.out.println("3. Wurf = Dunkel - draußen:"+ausgabe);
 					break;
 				}
 				
@@ -42,13 +43,25 @@ public class Spielen {
 				spieler1.print();
 				System.out.println(spieler2.name +": \n");
 				spieler2.print();
-				if(spieler1.compareTo(spieler2)>0){
+				if(spieler1.compareTo(spieler2)<0){
 					Integer bisher = spielstand.get(spieler1);
 					if(bisher==null)
 						spielstand.put(spieler1, 1);
 					else
 						spielstand.put(spieler1, bisher+1);
 				}
+				
+				if(spieler1.compareTo(spieler2)>0){
+					Integer bisher = spielstand.get(spieler2);
+					if(bisher==null)
+						spielstand.put(spieler2, 1);
+					else
+						spielstand.put(spieler2, bisher+1);
+				}
+				System.out.println("Spielstand:");
+				System.out.println("Spieler1: "+spielstand.get(spieler1));
+				System.out.println("Spieler2: "+spielstand.get(spieler2));
+				
 			}else{
 				System.out.println("Aktiver Spieler = "+active.name);
 			}
