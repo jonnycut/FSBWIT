@@ -7,6 +7,10 @@ public class Spielen {
 	public static void main(String[] args) {
 		Becher spieler1 = new Becher("Kai");
 		Becher spieler2 = new Becher("Dennis");
+		Map<Becher, Integer> spielstand = new HashMap<>();
+		spielstand.put(spieler1, 0);
+		spielstand.put(spieler2, 0);
+		
 		Scanner s = new Scanner(System.in);
 		
 		Becher active = spieler1;
@@ -38,6 +42,13 @@ public class Spielen {
 				spieler1.print();
 				System.out.println(spieler2.name +": \n");
 				spieler2.print();
+				if(spieler1.compareTo(spieler2)>0){
+					Integer bisher = spielstand.get(spieler1);
+					if(bisher==null)
+						spielstand.put(spieler1, 1);
+					else
+						spielstand.put(spieler1, bisher+1);
+				}
 			}else{
 				System.out.println("Aktiver Spieler = "+active.name);
 			}

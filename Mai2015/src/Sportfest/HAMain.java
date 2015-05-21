@@ -39,6 +39,7 @@ public class HAMain {
 		
 		kindVon.put(new Simpson("Bart"), eltern);
 		kindVon.put(new Simpson("Lisa"), eltern);
+		kindVon.put(new Simpson("Maggie"),eltern);
 		
 		eltern = new HashSet<>();
 		
@@ -52,6 +53,10 @@ public class HAMain {
 	
 		
 		printEinladungen();
+		System.out.println();
+		System.out.println();
+		
+		zeigeAnzahl();
 		
 
 	}
@@ -69,7 +74,7 @@ public class HAMain {
 			
 			int kinder =0;
 			
-			for(Set<Simpson> eltern:kindVon.values()){
+			for(Set<Simpson> eltern : kindVon.values()){
 				if(eltern.contains(s))
 					kinder++;
 			}
@@ -85,5 +90,49 @@ public class HAMain {
 		}
 		
 	}
+	
+	public static void zeigeAnzahl(){
+		
+		int counterMoe = 0;
+		Set<Simpson> kinder = new HashSet<>();
+		
+		for(Simpson s: AKWmitarbeiter){
+			for(Simpson kind : kindVon.keySet()){
+				if (kindVon.get(kind).contains(s))
+					kinder.add(kind);
+					
+			}	
+		}
+		
+		for(Simpson s: moes)
+			if(AKWmitarbeiter.contains(s))
+				counterMoe ++;
+		
+		
+		System.out.println("Gesamtpersonen: "+(AKWmitarbeiter.size()+kinder.size()));
+		System.out.println("Kinder: " +kinder.size());
+		System.out.println("Moes: "+counterMoe);
+		
+	}
+	
+	public static void printEinladungen2(){
+		List<Simpson> mitarbeiter = new ArrayList<>(AKWmitarbeiter);
+		Collections.sort(mitarbeiter, new Comparator<Simpson>(){
+			public int compare(Simpson s1, Simpson s2){
+				if(frauen.contains(s1))
+					if(frauen.contains(s2))
+						return s1.compareTo(s2);
+					else return -1;
+				else
+					if(frauen.contains(s2))
+						return 1;
+					else return s1.compareTo(s2);
+			};
+			
+			});
+	}
+	
+	
+
 
 }

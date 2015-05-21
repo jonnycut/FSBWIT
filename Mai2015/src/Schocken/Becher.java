@@ -1,11 +1,31 @@
 package Schocken;
 
-public class Becher {
+public class Becher implements Comparable {
 	String name;
 	int a;
 	int b;
 	int c;
 	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getA() {
+		return a;
+	}
+
+	public int getB() {
+		return b;
+	}
+
+	public int getC() {
+		return c;
+	}
+
 	public Becher(String name){
 		this.name = name;
 		a= (int) (Math.random()*6)+1;
@@ -78,6 +98,15 @@ public class Becher {
 		}
 		
 		
+	}
+
+	public int compareTo(Becher b2) {
+		int becher2 = b2.getA()+b2.getB()+b2.getC();
+		int becher1 = this.a+this.b+this.c;
+		
+		
+		// TODO Auto-generated method stub
+		return becher1 - becher2;
 	}
 
 }
