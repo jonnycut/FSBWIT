@@ -45,6 +45,10 @@ public class Simpson implements Comparable<Simpson> {
 		return true;
 	}
 	
+	public String toString(){
+		return name;
+	}
+	
 	
 	
 
